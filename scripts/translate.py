@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import re
 import stat
 import sys
 from pathlib import Path
@@ -85,9 +86,21 @@ def 校验简单翻译项(项: dict[str, str], 序号: int) -> dict[str, str]:
 
 
 def 生成中文脚本(原始内容: str, 翻译列表: list[dict[str, str]]) -> str:
-    内容 = 原始内容
-    for 项 in 翻译列表:
-        内容 = 内容.replace(项["原文"], 项["译文"])
+    行列表 = []
+    多行输出中 = False
+    翻译列表 = sorted(翻译列表, key=lambda 项: len(项["原文"]), reverse=True)
+
+    for 行 in 原始内容.splitlines(keepends=True):
+        应翻译 = 多行输出中 or 是输出语句(行)
+        if 应翻译:
+            for 项 in 翻译列表:
+                行 = 行.replace(项["原文"], 项["译文"])
+        行列表.append(行)
+
+        if 是多行输出起点(行) or (多行输出中 and 双引号数量为奇数(行)):
+            多行输出中 = not 多行输出中
+
+    内容 = "".join(行列表)
 
     文件头 = """# 此文件由 scripts/translate.py 自动生成，请不要直接编辑。
 # 如需调整中文内容，请修改 translations.yml 后重新生成。
@@ -97,6 +110,29 @@ def 生成中文脚本(原始内容: str, 翻译列表: list[dict[str, str]]) ->
         第一行, 分隔符, 剩余内容 = 内容.partition("\n")
         return f"{第一行}\n{文件头}{剩余内容 if 分隔符 else ''}"
     return 文件头 + 内容
+
+
+def 是输出语句(行: str) -> bool:
+    return re.search(r"(^|\s)(echo|printf)\b", 行) is not None or re.search(r"(^|\s)read\s+(-[A-Za-z]+\s+)*['\"]", 行) is not None
+
+
+def 是多行输出起点(行: str) -> bool:
+    return 是输出语句(行) and 双引号数量为奇数(行)
+
+
+def 双引号数量为奇数(行: str) -> bool:
+    数量 = 0
+    转义中 = False
+    for 字符 in 行:
+        if 转义中:
+            转义中 = False
+            continue
+        if 字符 == "\\":
+            转义中 = True
+            continue
+        if 字符 == '"':
+            数量 += 1
+    return 数量 % 2 == 1
 
 
 def 设置可执行权限(路径: Path) -> None:

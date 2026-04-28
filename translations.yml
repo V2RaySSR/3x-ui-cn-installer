@@ -1,22 +1,13 @@
 # 3x-ui 安装脚本中文翻译表
 #
-# 维护建议：
-# - 优先翻译完整句子，避免替换过短词汇导致误伤代码逻辑
-# - 只翻译用户可见的输出文本、菜单文本、状态文本
-# - 不在这里修改命令、变量名、函数名、URL 或系统路径
+# 只翻译用户可见文案。避免使用过短词条，防止误伤变量名、命令或路径。
 
 替换:
-  - 原文: "Please run this script as root"
-    译文: "请使用 root 用户运行此脚本"
-
   - 原文: "Fatal error"
     译文: "致命错误"
 
   - 原文: "Please run this script with root privilege"
     译文: "请使用 root 权限运行此脚本"
-
-  - 原文: "This script must be run as root"
-    译文: "此脚本必须以 root 权限运行"
 
   - 原文: "Failed to check the system OS, please contact the author!"
     译文: "检测系统失败，请联系作者！"
@@ -24,14 +15,41 @@
   - 原文: "The OS release is:"
     译文: "当前系统发行版："
 
+  - 原文: "Arch:"
+    译文: "系统架构："
+
   - 原文: "Unsupported CPU architecture!"
     译文: "不支持的 CPU 架构！"
 
-  - 原文: "Unsupported operating system"
-    译文: "不支持的操作系统"
+  - 原文: "Port ${WebPort} is in use."
+    译文: "端口 ${WebPort} 已被占用。"
+
+  - 原文: "Port ${WebPort} is busy; cannot proceed."
+    译文: "端口 ${WebPort} 正忙，无法继续。"
+
+  - 原文: "Port ${WebPort} is free and ready for standalone validation."
+    译文: "端口 ${WebPort} 可用，已准备好进行独立验证。"
+
+  - 原文: "- Start"
+    译文: "- 启动"
+
+  - 原文: "- Stop"
+    译文: "- 停止"
+
+  - 原文: "- Restart"
+    译文: "- 重启"
+
+  - 原文: "- Update"
+    译文: "- 更新"
+
+  - 原文: "- Install"
+    译文: "- 安装"
 
   - 原文: "Installing acme.sh for SSL certificate management..."
     译文: "正在安装 acme.sh 用于 SSL 证书管理..."
+
+  - 原文: "Failed to install acme.sh, skipping SSL setup"
+    译文: "acme.sh 安装失败，跳过 SSL 设置"
 
   - 原文: "Failed to install acme.sh"
     译文: "acme.sh 安装失败"
@@ -42,23 +60,326 @@
   - 原文: "Setting up SSL certificate..."
     译文: "正在设置 SSL 证书..."
 
+  - 原文: "Issuing SSL certificate for"
+    译文: "正在签发 SSL 证书："
+
+  - 原文: "Note: Port 80 must be open and accessible from the internet"
+    译文: "注意：80 端口必须开放，并且可从公网访问"
+
+  - 原文: "Failed to issue certificate for"
+    译文: "证书签发失败："
+
+  - 原文: "Please ensure port 80 is open and try again later with: x-ui"
+    译文: "请确认 80 端口已开放，稍后可通过 x-ui 重试"
+
+  - 原文: "Failed to install certificate"
+    译文: "证书安装失败"
+
+  - 原文: "SSL certificate installed and configured successfully!"
+    译文: "SSL 证书已成功安装并完成配置！"
+
+  - 原文: "Certificate files not found"
+    译文: "未找到证书文件"
+
+  - 原文: "Setting up Let's Encrypt IP certificate (shortlived profile)..."
+    译文: "正在设置 Let's Encrypt IP 证书（短有效期配置）..."
+
+  - 原文: "Note: IP certificates are valid for ~6 days and will auto-renew."
+    译文: "注意：IP 证书有效期约 6 天，并会自动续期。"
+
+  - 原文: "Default listener is port 80. If you choose another port, ensure external port 80 forwards to it."
+    译文: "默认监听 80 端口。如果选择其他端口，请确保外部 80 端口已转发到该端口。"
+
+  - 原文: "IPv4 address is required"
+    译文: "必须提供 IPv4 地址"
+
+  - 原文: "Invalid IPv4 address:"
+    译文: "无效的 IPv4 地址："
+
+  - 原文: "Including IPv6 address:"
+    译文: "包含 IPv6 地址："
+
+  - 原文: "Port to use for ACME HTTP-01 listener (default 80):"
+    译文: "ACME HTTP-01 监听端口（默认 80）："
+
+  - 原文: "Invalid port provided. Falling back to 80."
+    译文: "提供的端口无效，将回退到 80。"
+
+  - 原文: "Using port"
+    译文: "正在使用端口"
+
+  - 原文: "for standalone validation."
+    译文: "进行独立验证。"
+
+  - 原文: "Reminder: Let's Encrypt still connects on port 80; forward external port 80 to"
+    译文: "提醒：Let's Encrypt 仍会连接 80 端口；请将外部 80 端口转发到"
+
+  - 原文: "is in use."
+    译文: "已被占用。"
+
+  - 原文: "Enter another port for acme.sh standalone listener (leave empty to abort):"
+    译文: "请输入 acme.sh 独立监听使用的其他端口（留空则中止）："
+
+  - 原文: "is busy; cannot proceed."
+    译文: "正忙，无法继续。"
+
+  - 原文: "Invalid port provided."
+    译文: "提供的端口无效。"
+
+  - 原文: "is free and ready for standalone validation."
+    译文: "可用，已准备好进行独立验证。"
+
+  - 原文: "Issuing IP certificate for"
+    译文: "正在为以下 IP 签发证书："
+
+  - 原文: "Failed to issue IP certificate"
+    译文: "IP 证书签发失败"
+
+  - 原文: "Please ensure port"
+    译文: "请确认端口"
+
+  - 原文: "is reachable (or forwarded from external port 80)"
+    译文: "可访问（或已从外部 80 端口转发）"
+
+  - 原文: "Certificate issued successfully, installing..."
+    译文: "证书签发成功，正在安装..."
+
+  - 原文: "Certificate files not found after installation"
+    译文: "安装后未找到证书文件"
+
+  - 原文: "Certificate files installed successfully"
+    译文: "证书文件安装成功"
+
+  - 原文: "Setting certificate paths for the panel..."
+    译文: "正在为面板设置证书路径..."
+
+  - 原文: "Warning: Could not set certificate paths automatically"
+    译文: "警告：无法自动设置证书路径"
+
+  - 原文: "Certificate files are at:"
+    译文: "证书文件位置："
+
+  - 原文: "Cert:"
+    译文: "证书："
+
+  - 原文: "Key:"
+    译文: "私钥："
+
+  - 原文: "Certificate paths configured successfully"
+    译文: "证书路径配置成功"
+
+  - 原文: "IP certificate installed and configured successfully!"
+    译文: "IP 证书已成功安装并完成配置！"
+
+  - 原文: "Certificate valid for ~6 days, auto-renews via acme.sh cron job."
+    译文: "证书有效期约 6 天，将通过 acme.sh 定时任务自动续期。"
+
+  - 原文: "acme.sh will automatically renew and reload x-ui before expiry."
+    译文: "acme.sh 会在过期前自动续期并重载 x-ui。"
+
+  - 原文: "acme.sh could not be found. Installing now..."
+    译文: "未找到 acme.sh，正在安装..."
+
   - 原文: "Please enter your domain name:"
     译文: "请输入你的域名："
 
   - 原文: "Domain name cannot be empty. Please try again."
     译文: "域名不能为空，请重试。"
 
+  - 原文: "Invalid domain format:"
+    译文: "域名格式无效："
+
+  - 原文: "Please enter a valid domain name."
+    译文: "请输入有效的域名。"
+
+  - 原文: "Your domain is:"
+    译文: "你的域名是："
+
+  - 原文: "checking it..."
+    译文: "正在检查..."
+
+  - 原文: "Existing certificate found for"
+    译文: "已找到现有证书："
+
+  - 原文: "will reuse it."
+    译文: "将复用该证书。"
+
+  - 原文: "Your domain is ready for issuing certificates now..."
+    译文: "你的域名已准备好签发证书..."
+
   - 原文: "Please choose which port to use (default is 80):"
     译文: "请选择要使用的端口（默认 80）："
+
+  - 原文: "Your input"
+    译文: "你的输入"
+
+  - 原文: "is invalid, will use default port 80."
+    译文: "无效，将使用默认 80 端口。"
+
+  - 原文: "Will use port:"
+    译文: "将使用端口："
+
+  - 原文: "to issue certificates. Please make sure this port is open."
+    译文: "签发证书。请确保此端口已开放。"
 
   - 原文: "Stopping panel temporarily..."
     译文: "正在临时停止面板..."
 
+  - 原文: "Issuing certificate failed, please check logs."
+    译文: "证书签发失败，请检查日志。"
+
+  - 原文: "Issuing certificate succeeded, installing certificates..."
+    译文: "证书签发成功，正在安装证书..."
+
+  - 原文: "Using existing certificate, installing certificates..."
+    译文: "正在使用现有证书并安装证书..."
+
+  - 原文: "Default --reloadcmd for ACME is:"
+    译文: "ACME 默认 --reloadcmd 为："
+
+  - 原文: "This command will run on every certificate issue and renew."
+    译文: "该命令会在每次证书签发和续期时运行。"
+
+  - 原文: "Would you like to modify --reloadcmd for ACME? (y/n):"
+    译文: "是否要修改 ACME 的 --reloadcmd？(y/n)："
+
+  - 原文: "Preset: systemctl reload nginx ; systemctl restart x-ui"
+    译文: "预设：systemctl reload nginx ; systemctl restart x-ui"
+
+  - 原文: "Input your own command"
+    译文: "输入你自己的命令"
+
+  - 原文: "Keep default reloadcmd"
+    译文: "保持默认 reloadcmd"
+
+  - 原文: "Choose an option:"
+    译文: "请选择一个选项："
+
+  - 原文: "Reloadcmd is:"
+    译文: "Reloadcmd 为："
+
+  - 原文: "It's recommended to put x-ui restart at the end"
+    译文: "建议将 x-ui restart 放在最后"
+
+  - 原文: "Please enter your custom reloadcmd:"
+    译文: "请输入自定义 reloadcmd："
+
+  - 原文: "Keeping default reloadcmd"
+    译文: "保持默认 reloadcmd"
+
+  - 原文: "Installing certificate succeeded, enabling auto renew..."
+    译文: "证书安装成功，正在启用自动续期..."
+
+  - 原文: "Installing certificate failed, exiting."
+    译文: "证书安装失败，正在退出。"
+
+  - 原文: "Auto renew setup had issues, certificate details:"
+    译文: "自动续期设置可能存在问题，证书详情："
+
+  - 原文: "Auto renew succeeded, certificate details:"
+    译文: "自动续期设置成功，证书详情："
+
+  - 原文: "Would you like to set this certificate for the panel? (y/n):"
+    译文: "是否将此证书设置给面板？(y/n)："
+
+  - 原文: "Certificate paths set for the panel"
+    译文: "已为面板设置证书路径"
+
+  - 原文: "Certificate File:"
+    译文: "证书文件："
+
+  - 原文: "Private Key File:"
+    译文: "私钥文件："
+
+  - 原文: "Access URL:"
+    译文: "访问地址："
+
+  - 原文: "Panel will restart to apply SSL certificate..."
+    译文: "面板将重启以应用 SSL 证书..."
+
+  - 原文: "Error: Certificate or private key file not found for domain:"
+    译文: "错误：未找到该域名的证书或私钥文件："
+
+  - 原文: "Skipping panel path setting."
+    译文: "跳过面板路径设置。"
+
   - 原文: "Choose SSL certificate setup method:"
     译文: "请选择 SSL 证书设置方式："
 
+  - 原文: "Let's Encrypt for Domain (90-day validity, auto-renews)"
+    译文: "Let's Encrypt 域名证书（90 天有效期，自动续期）"
+
+  - 原文: "Let's Encrypt for IP Address (6-day validity, auto-renews)"
+    译文: "Let's Encrypt IP 证书（6 天有效期，自动续期）"
+
   - 原文: "Custom SSL Certificate (Path to existing files)"
     译文: "自定义 SSL 证书（使用已有文件路径）"
+
+  - 原文: "Note:"
+    译文: "注意："
+
+  - 原文: "Options 1 & 2 require port 80 open. Option 3 requires manual paths."
+    译文: "选项 1 和 2 需要开放 80 端口。选项 3 需要手动填写路径。"
+
+  - 原文: "Choose an option (default 2 for IP):"
+    译文: "请选择一个选项（默认 2，使用 IP）："
+
+  - 原文: "Using Let's Encrypt for domain certificate..."
+    译文: "正在使用 Let's Encrypt 域名证书..."
+
+  - 原文: "✓ SSL certificate configured successfully with domain:"
+    译文: "✓ SSL 证书已成功配置，域名："
+
+  - 原文: "SSL setup may have completed, but domain extraction failed"
+    译文: "SSL 设置可能已完成，但域名提取失败"
+
+  - 原文: "SSL certificate setup failed for domain mode."
+    译文: "域名模式下 SSL 证书设置失败。"
+
+  - 原文: "Using Let's Encrypt for IP certificate (shortlived profile)..."
+    译文: "正在使用 Let's Encrypt IP 证书（短有效期配置）..."
+
+  - 原文: "Do you have an IPv6 address to include? (leave empty to skip):"
+    译文: "是否包含 IPv6 地址？（留空则跳过）："
+
+  - 原文: "✓ Let's Encrypt IP certificate configured successfully"
+    译文: "✓ Let's Encrypt IP 证书配置成功"
+
+  - 原文: "✗ IP certificate setup failed. Please check port 80 is open."
+    译文: "✗ IP 证书设置失败。请检查 80 端口是否开放。"
+
+  - 原文: "Using custom existing certificate..."
+    译文: "正在使用自定义已有证书..."
+
+  - 原文: "Please enter domain name certificate issued for:"
+    译文: "请输入证书签发对应的域名："
+
+  - 原文: "Input certificate path (keywords: .crt / fullchain):"
+    译文: "请输入证书路径（关键词：.crt / fullchain）："
+
+  - 原文: "Error: File does not exist! Try again."
+    译文: "错误：文件不存在！请重试。"
+
+  - 原文: "Error: File exists but is not readable (check permissions)!"
+    译文: "错误：文件存在但不可读（请检查权限）！"
+
+  - 原文: "Error: File is empty!"
+    译文: "错误：文件为空！"
+
+  - 原文: "Input private key path (keywords: .key / privatekey):"
+    译文: "请输入私钥路径（关键词：.key / privatekey）："
+
+  - 原文: "✓ Custom certificate paths applied."
+    译文: "✓ 自定义证书路径已应用。"
+
+  - 原文: "Note: You are responsible for renewing these files externally."
+    译文: "注意：你需要自行在外部续期这些文件。"
+
+  - 原文: "Invalid option. Skipping SSL setup."
+    译文: "选项无效，跳过 SSL 设置。"
+
+  - 原文: "Would you like to customize the Panel Port settings? (If not, a random port will be applied) [y/n]:"
+    译文: "是否自定义面板端口？（否则将使用随机端口）[y/n]："
 
   - 原文: "Please set up the panel port:"
     译文: "请设置面板端口："
@@ -69,65 +390,149 @@
   - 原文: "Generated random port:"
     译文: "已生成随机端口："
 
+  - 原文: "SSL Certificate Setup (MANDATORY)"
+    译文: "SSL 证书设置（必需）"
+
+  - 原文: "For security, SSL certificate is required for all panels."
+    译文: "出于安全考虑，所有面板都必须配置 SSL 证书。"
+
+  - 原文: "Let's Encrypt now supports both domains and IP addresses!"
+    译文: "Let's Encrypt 现在同时支持域名和 IP 地址！"
+
   - 原文: "Panel Installation Complete!"
     译文: "面板安装完成！"
 
-  - 原文: "Username"
-    译文: "用户名"
+  - 原文: "Username:"
+    译文: "用户名："
 
-  - 原文: "Password"
-    译文: "密码"
+  - 原文: "Password:"
+    译文: "密码："
 
-  - 原文: "Port"
-    译文: "端口"
-
-  - 原文: "Panel"
-    译文: "面板"
-
-  - 原文: "x-ui"
-    译文: "x-ui"
-
-  - 原文: "3x-ui"
-    译文: "3x-ui"
-
-  - 原文: "Access URL"
-    译文: "访问地址"
+  - 原文: "Port:"
+    译文: "端口："
 
   - 原文: "IMPORTANT: Save these credentials securely!"
     译文: "重要：请安全保存这些登录信息！"
 
+  - 原文: "SSL Certificate: Enabled and configured"
+    译文: "SSL 证书：已启用并配置"
+
+  - 原文: "WebBasePath is missing or too short. Generating a new one..."
+    译文: "WebBasePath 缺失或太短，正在生成新的路径..."
+
+  - 原文: "New WebBasePath:"
+    译文: "新的 WebBasePath："
+
+  - 原文: "SSL Certificate Setup (RECOMMENDED)"
+    译文: "SSL 证书设置（推荐）"
+
+  - 原文: "Default credentials detected. Security update required..."
+    译文: "检测到默认登录信息，需要进行安全更新..."
+
+  - 原文: "Generated new random login credentials:"
+    译文: "已生成新的随机登录信息："
+
+  - 原文: "Username, Password, and WebBasePath are properly set."
+    译文: "用户名、密码和 WebBasePath 已正确设置。"
+
+  - 原文: "SSL certificate already configured. No action needed."
+    译文: "SSL 证书已配置，无需操作。"
+
+  - 原文: "Trying to fetch version with IPv4..."
+    译文: "正在尝试通过 IPv4 获取版本..."
+
+  - 原文: "Failed to fetch x-ui version, it may be due to GitHub API restrictions, please try it later"
+    译文: "获取 x-ui 版本失败，可能是 GitHub API 限制导致，请稍后再试"
+
   - 原文: "Got x-ui latest version:"
     译文: "已获取 x-ui 最新版本："
+
+  - 原文: "beginning the installation..."
+    译文: "开始安装..."
 
   - 原文: "Downloading x-ui failed, please be sure that your server can access GitHub"
     译文: "下载 x-ui 失败，请确认你的服务器可以访问 GitHub"
 
-  - 原文: "Running..."
-    译文: "运行中..."
+  - 原文: "Please use a newer version (at least v2.3.5). Exiting installation."
+    译文: "请使用较新的版本（至少 v2.3.5）。正在退出安装。"
+
+  - 原文: "Beginning to install x-ui"
+    译文: "开始安装 x-ui"
+
+  - 原文: "Download x-ui"
+    译文: "下载 x-ui"
+
+  - 原文: "failed, please check if the version exists"
+    译文: "失败，请检查该版本是否存在"
+
+  - 原文: "Failed to download x-ui.sh"
+    译文: "下载 x-ui.sh 失败"
+
+  - 原文: "Added x-ui.db to /etc/.gitignore for etckeeper"
+    译文: "已将 x-ui.db 添加到 /etc/.gitignore 以适配 etckeeper"
+
+  - 原文: "Created /etc/.gitignore and added x-ui.db for etckeeper"
+    译文: "已创建 /etc/.gitignore，并为 etckeeper 添加 x-ui.db"
+
+  - 原文: "Failed to download x-ui.rc"
+    译文: "下载 x-ui.rc 失败"
+
+  - 原文: "Found x-ui.service in extracted files, installing..."
+    译文: "在解压文件中找到 x-ui.service，正在安装..."
+
+  - 原文: "Found x-ui.service.debian in extracted files, installing..."
+    译文: "在解压文件中找到 x-ui.service.debian，正在安装..."
+
+  - 原文: "Found x-ui.service.arch in extracted files, installing..."
+    译文: "在解压文件中找到 x-ui.service.arch，正在安装..."
+
+  - 原文: "Found x-ui.service.rhel in extracted files, installing..."
+    译文: "在解压文件中找到 x-ui.service.rhel，正在安装..."
+
+  - 原文: "Service files not found in tar.gz, downloading from GitHub..."
+    译文: "tar.gz 中未找到服务文件，正在从 GitHub 下载..."
+
+  - 原文: "Failed to install x-ui.service from GitHub"
+    译文: "从 GitHub 安装 x-ui.service 失败"
+
+  - 原文: "Setting up systemd unit..."
+    译文: "正在设置 systemd 单元..."
+
+  - 原文: "Failed to install x-ui.service file"
+    译文: "安装 x-ui.service 文件失败"
+
+  - 原文: "installation finished, it is running now..."
+    译文: "安装完成，当前正在运行..."
+
+  - 原文: "x-ui control menu usages (subcommands):"
+    译文: "x-ui 控制菜单用法（子命令）："
+
+  - 原文: "Admin Management Script"
+    译文: "管理脚本"
 
   - 原文: "Current Status"
     译文: "当前状态"
 
+  - 原文: "Current Settings"
+    译文: "当前设置"
+
   - 原文: "Enable Autostart on OS Startup"
-    译文: "开机自启"
+    译文: "启用开机自启"
 
   - 原文: "Disable Autostart on OS Startup"
-    译文: "关闭开机自启"
+    译文: "禁用开机自启"
 
-  - 原文: "Start"
-    译文: "启动"
+  - 原文: "Check logs"
+    译文: "查看日志"
 
-  - 原文: "Stop"
-    译文: "停止"
+  - 原文: "Check Fail2ban ban logs"
+    译文: "查看 Fail2ban 封禁日志"
 
-  - 原文: "Restart"
-    译文: "重启"
-
-  - 原文: "Update"
-    译文: "更新"
-
-  - 原文: "Install"
-    译文: "安装"
+  - 原文: "Legacy version"
+    译文: "旧版"
 
   - 原文: "Uninstall"
     译文: "卸载"
+
+  - 原文: "Running..."
+    译文: "运行中..."

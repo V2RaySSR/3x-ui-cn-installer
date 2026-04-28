@@ -1,85 +1,66 @@
 # 3x-ui 中文安装器
 
-这个仓库用于自动同步官方 [3x-ui](https://github.com/MHSanaei/3x-ui) 安装脚本，并生成中文本地化安装脚本。
+自动同步官方 [3x-ui](https://github.com/MHSanaei/3x-ui) 安装脚本，并生成中文本地化安装脚本。
 
-项目原则很简单：
+本项目只做一件事：
 
-- 只汉化安装过程中的交互提示、菜单文字、状态文字
-- 不修改官方安装脚本的核心逻辑
-- 通过 GitHub Actions 自动跟随官方更新
-- 官方脚本变化后自动生成中文脚本并创建 PR，方便人工确认
+> 保持官方安装逻辑不变，仅汉化安装过程中的交互提示、菜单文字和状态文字。
 
-## 使用方式
+## 一键安装
 
 ```bash
 bash <(curl -Ls https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/main/generated/install-cn.sh)
 ```
 
-## 目录说明
+## 项目特点
 
-```text
-3x-ui-cn-installer/
-├── README.md
-├── translations.yml
-├── scripts/translate.py
-├── upstream/install.sh
-├── generated/install-cn.sh
-└── .github/workflows/sync.yml
-```
+- 自动跟随官方 3x-ui 安装脚本更新
+- 自动生成中文安装脚本
+- 仅汉化用户可见文案
+- 不修改安装流程、下载地址、服务配置和核心逻辑
+- 官方脚本变化后自动创建 PR，便于确认差异
 
-说明：
+## 文件说明
 
+- `generated/install-cn.sh`：中文安装脚本，用户直接执行这个文件
+- `upstream/install.sh`：同步自官方的原始安装脚本
 - `translations.yml`：中文翻译映射表
-- `scripts/translate.py`：根据翻译映射生成中文安装脚本
-- `upstream/install.sh`：自动同步的官方原始安装脚本
-- `generated/install-cn.sh`：生成后的中文安装脚本，最终用户执行这个文件
-- `.github/workflows/sync.yml`：自动同步、自动生成、自动创建 PR
+- `scripts/translate.py`：中文脚本生成器
+- `.github/workflows/sync.yml`：自动同步工作流
 
-## 本地生成
+## 自动更新
 
-先获取官方安装脚本：
+仓库每天自动检查官方安装脚本。
 
-```bash
-curl -L https://raw.githubusercontent.com/MHSanaei/3x-ui/master/install.sh -o upstream/install.sh
-```
+如果官方脚本发生变化，GitHub Actions 会自动：
 
-然后生成中文脚本：
+1. 同步官方最新版 `install.sh`
+2. 重新生成 `generated/install-cn.sh`
+3. 创建同步 PR
 
-```bash
-python3 scripts/translate.py
-```
+PR 合并后，用户使用的一键安装命令就会自动指向最新版中文脚本。
 
-生成结果会写入：
+## 汉化范围
 
-```text
-generated/install-cn.sh
-```
+本项目汉化范围包括：
 
-## 翻译规则
+- 安装过程提示
+- 证书配置提示
+- 错误提示
+- 安装完成信息
+- 常用命令菜单
 
-翻译内容统一维护在 `translations.yml`。
+不汉化、不修改：
 
-每条翻译包含：
-
-```yaml
-- 原文: "Install"
-  译文: "安装"
-```
-
-脚本生成时会按顺序做文本替换。为了尽量减少误改，建议优先添加完整提示语，而不是过短的单词。
-
-## 自动同步
-
-GitHub Actions 会在每天自动运行，也可以在仓库页面手动触发。
-
-自动流程：
-
-1. 拉取官方最新版 `install.sh`
-2. 使用 `translations.yml` 生成 `generated/install-cn.sh`
-3. 如果内容有变化，自动创建一个 PR
+- 变量名
+- 函数名
+- 下载地址
+- 系统服务配置
+- 安装逻辑
+- 官方项目名称和命令名称
 
 ## 维护原则
 
-这个仓库只做中文本地化，不承诺修改安装逻辑。
+中文脚本由自动流程生成，不直接手工编辑 `generated/install-cn.sh`。
 
-如果官方脚本发生较大变化，优先更新 `translations.yml`，而不是直接编辑 `generated/install-cn.sh`。
+如果官方脚本新增英文提示，应更新 `translations.yml`，再由自动流程重新生成中文脚本。
