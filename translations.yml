@@ -15,6 +15,39 @@
   - 原文: "The OS release is:"
     译文: "当前系统发行版："
 
+  - 原文: "ERROR: You must be root to run this script!"
+    译文: "错误：必须使用 root 用户运行此脚本！"
+
+  - 原文: "Panel installed, Please do not reinstall"
+    译文: "面板已安装，请勿重复安装"
+
+  - 原文: "Please install the panel first"
+    译文: "请先安装面板"
+
+  - 原文: "Panel state:"
+    译文: "面板状态："
+
+  - 原文: "Start automatically: ${green}Yes"
+    译文: "开机自启：${green}是"
+
+  - 原文: "Start automatically: ${red}No"
+    译文: "开机自启：${red}否"
+
+  - 原文: "xray state:"
+    译文: "Xray 状态："
+
+  - 原文: "Running"
+    译文: "运行中"
+
+  - 原文: "Not Running"
+    译文: "未运行"
+
+  - 原文: "Not Installed"
+    译文: "未安装"
+
+  - 原文: "Please enter your selection [0-26]:"
+    译文: "请输入你的选择 [0-26]："
+
   - 原文: "Arch:"
     译文: "系统架构："
 

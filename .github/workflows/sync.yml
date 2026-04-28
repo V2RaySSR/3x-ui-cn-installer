@@ -30,6 +30,7 @@ jobs:
         run: |
           mkdir -p upstream generated
           curl -L https://raw.githubusercontent.com/MHSanaei/3x-ui/master/install.sh -o upstream/install.sh
+          curl -L https://raw.githubusercontent.com/MHSanaei/3x-ui/main/x-ui.sh -o upstream/x-ui.sh
 
       - name: 生成中文安装脚本
         run: python scripts/translate.py
@@ -50,7 +51,9 @@ jobs:
         with:
           add-paths: |
             upstream/install.sh
+            upstream/x-ui.sh
             generated/install-cn.sh
+            generated/x-ui-cn.sh
           commit-message: "同步官方安装脚本并生成中文版"
           branch: "auto/sync-upstream-install"
           delete-branch: true

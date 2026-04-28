@@ -19,8 +19,10 @@ except ImportError:
 
 项目根目录 = Path(__file__).resolve().parents[1]
 默认上游脚本 = 项目根目录 / "upstream" / "install.sh"
+默认上游管理脚本 = 项目根目录 / "upstream" / "x-ui.sh"
 默认翻译表 = 项目根目录 / "translations.yml"
 默认输出脚本 = 项目根目录 / "generated" / "install-cn.sh"
+默认输出管理脚本 = 项目根目录 / "generated" / "x-ui-cn.sh"
 
 
 def 读取翻译表(路径: Path) -> list[dict[str, str]]:
@@ -103,6 +105,9 @@ def 生成中文脚本(原始内容: str, 翻译列表: list[dict[str, str]]) ->
 
     内容 = "".join(行列表)
     内容 = 格式化中文命令菜单(内容)
+    内容 = 格式化中文用法菜单(内容)
+    内容 = 格式化中文管理菜单(内容)
+    内容 = 使用中文管理脚本下载地址(内容)
 
     文件头 = """# 此文件由 scripts/translate.py 自动生成，请不要直接编辑。
 # 如需调整中文内容，请修改 translations.yml 后重新生成。
@@ -112,6 +117,12 @@ def 生成中文脚本(原始内容: str, 翻译列表: list[dict[str, str]]) ->
         第一行, 分隔符, 剩余内容 = 内容.partition("\n")
         return f"{第一行}\n{文件头}{剩余内容 if 分隔符 else ''}"
     return 文件头 + 内容
+
+
+def 使用中文管理脚本下载地址(内容: str) -> str:
+    官方地址 = "https://raw.githubusercontent.com/MHSanaei/3x-ui/main/x-ui.sh"
+    中文地址 = "https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/main/generated/x-ui-cn.sh"
+    return 内容.replace(官方地址, 中文地址)
 
 
 def 格式化中文命令菜单(内容: str) -> str:
@@ -157,6 +168,117 @@ def 生成中文命令菜单源码() -> str:
 
     行列表.append(f'└{"─" * 内宽}┘"')
     return "\n".join(行列表)
+
+
+def 格式化中文用法菜单(内容: str) -> str:
+    菜单模式 = re.compile(
+        r'echo -e "┌────────────────────────────────────────────────────────────────┐\n'
+        r'│  \$\{blue\}x-ui 控制菜单用法（子命令）：\$\{plain\}.*?'
+        r'└────────────────────────────────────────────────────────────────┘"',
+        re.S,
+    )
+    return 菜单模式.sub(生成中文用法菜单源码(), 内容)
+
+
+def 生成中文用法菜单源码() -> str:
+    命令列表 = [
+        ("x-ui", "管理脚本"),
+        ("x-ui start", "启动"),
+        ("x-ui stop", "停止"),
+        ("x-ui restart", "重启"),
+        ("x-ui restart-xray", "重启 Xray"),
+        ("x-ui status", "当前状态"),
+        ("x-ui settings", "当前设置"),
+        ("x-ui enable", "启用开机自启"),
+        ("x-ui disable", "禁用开机自启"),
+        ("x-ui log", "查看日志"),
+        ("x-ui banlog", "查看 Fail2ban 封禁日志"),
+        ("x-ui update", "更新"),
+        ("x-ui update-all-geofiles", "更新全部 Geo 文件"),
+        ("x-ui legacy", "旧版"),
+        ("x-ui install", "安装"),
+        ("x-ui uninstall", "卸载"),
+    ]
+    内宽 = 64
+    命令列宽 = 36
+    标题 = "x-ui 控制菜单用法（子命令）："
+    行列表 = [f'echo -e "┌{"─" * 内宽}┐']
+    行列表.append(f"│  ${{blue}}{标题}${{plain}}{空格(内宽 - 2 - 显示宽度(标题))}│")
+    行列表.append(f"│{空格(内宽)}│")
+    for 命令, 说明 in 命令列表:
+        左侧 = f"  ${{blue}}{命令}${{plain}}"
+        左侧宽度 = 2 + 显示宽度(命令)
+        中间空格数 = 命令列宽 - 左侧宽度
+        文本宽度 = 左侧宽度 + 中间空格数 + 2 + 显示宽度(说明)
+        行列表.append(f"│{左侧}{空格(中间空格数)}- {说明}{空格(内宽 - 文本宽度)}│")
+    行列表.append(f'└{"─" * 内宽}┘"')
+    return "\n".join(行列表)
+
+
+def 格式化中文管理菜单(内容: str) -> str:
+    菜单模式 = re.compile(
+        r'echo -e "\n╔────────────────────────────────────────────────╗\n'
+        r'│   \$\{green\}3X-UI Panel Management Script\$\{plain\}.*?'
+        r'╚────────────────────────────────────────────────╝\n"',
+        re.S,
+    )
+    return 菜单模式.sub(生成中文管理菜单源码(), 内容)
+
+
+def 生成中文管理菜单源码() -> str:
+    项目 = [
+        ("0.", "退出脚本"),
+        None,
+        ("1.", "安装"),
+        ("2.", "更新"),
+        ("3.", "更新菜单"),
+        ("4.", "旧版"),
+        ("5.", "卸载"),
+        None,
+        ("6.", "重置用户名和密码"),
+        ("7.", "重置 Web 入口路径"),
+        ("8.", "重置设置"),
+        ("9.", "修改端口"),
+        ("10.", "查看当前设置"),
+        None,
+        ("11.", "启动"),
+        ("12.", "停止"),
+        ("13.", "重启"),
+        ("14.", "重启 Xray"),
+        ("15.", "检查状态"),
+        ("16.", "日志管理"),
+        None,
+        ("17.", "启用开机自启"),
+        ("18.", "禁用开机自启"),
+        None,
+        ("19.", "SSL 证书管理"),
+        ("20.", "Cloudflare SSL 证书"),
+        ("21.", "IP 限制管理"),
+        ("22.", "防火墙管理"),
+        ("23.", "SSH 端口转发管理"),
+        None,
+        ("24.", "启用 BBR"),
+        ("25.", "更新 Geo 文件"),
+        ("26.", "Ookla 测速"),
+    ]
+    内宽 = 48
+    标题 = "3X-UI 面板管理脚本"
+    行列表 = ['echo -e "\n╔' + "─" * 内宽 + "╗"]
+    行列表.append(管理菜单行(f"${{green}}{标题}${{plain}}", 内宽, 左缩进=3))
+    for 项 in 项目:
+        if 项 is None:
+            行列表.append("│" + "─" * 内宽 + "│")
+            continue
+        编号, 文案 = 项
+        行列表.append(管理菜单行(f"${{green}}{编号}${{plain}} {文案}", 内宽, 左缩进=3 if len(编号) == 2 else 2))
+    行列表.append('╚' + "─" * 内宽 + '╝\n"')
+    return "\n".join(行列表)
+
+
+def 管理菜单行(文本: str, 内宽: int, 左缩进: int) -> str:
+    可见文本 = re.sub(r"\$\{[^}]+\}", "", 文本)
+    内容宽度 = 左缩进 + 显示宽度(可见文本)
+    return "│" + 空格(左缩进) + 文本 + 空格(内宽 - 内容宽度) + "│"
 
 
 def 显示宽度(文本: str) -> int:
@@ -207,22 +329,24 @@ def main() -> int:
     解析器.add_argument("--output", type=Path, default=默认输出脚本, help="生成的中文脚本路径")
     参数 = 解析器.parse_args()
 
-    if not 参数.upstream.exists():
-        print(f"找不到官方安装脚本：{参数.upstream}", file=sys.stderr)
-        return 1
-
-    原始内容 = 参数.upstream.read_text(encoding="utf-8")
     翻译列表 = 读取翻译表(参数.translations)
-    中文内容 = 生成中文脚本(原始内容, 翻译列表)
-
-    参数.output.parent.mkdir(parents=True, exist_ok=True)
-    with 参数.output.open("w", encoding="utf-8", newline="\n") as 文件:
-        文件.write(中文内容)
-    设置可执行权限(参数.output)
-
-    print(f"已生成中文安装脚本：{参数.output}")
+    生成文件(参数.upstream, 参数.output, 翻译列表, "中文安装脚本")
+    if 参数.upstream == 默认上游脚本 and 默认上游管理脚本.exists():
+        生成文件(默认上游管理脚本, 默认输出管理脚本, 翻译列表, "中文管理脚本")
     print(f"已应用翻译条目：{len(翻译列表)}")
     return 0
+
+
+def 生成文件(上游: Path, 输出: Path, 翻译列表: list[dict[str, str]], 名称: str) -> None:
+    if not 上游.exists():
+        raise SystemExit(f"找不到官方脚本：{上游}")
+    原始内容 = 上游.read_text(encoding="utf-8")
+    中文内容 = 生成中文脚本(原始内容, 翻译列表)
+    输出.parent.mkdir(parents=True, exist_ok=True)
+    with 输出.open("w", encoding="utf-8", newline="\n") as 文件:
+        文件.write(中文内容)
+    设置可执行权限(输出)
+    print(f"已生成{名称}：{输出}")
 
 
 if __name__ == "__main__":

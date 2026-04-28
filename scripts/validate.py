@@ -16,6 +16,8 @@ import translate
 项目根目录 = Path(__file__).resolve().parents[1]
 默认上游脚本 = 项目根目录 / "upstream" / "install.sh"
 默认生成脚本 = 项目根目录 / "generated" / "install-cn.sh"
+默认上游管理脚本 = 项目根目录 / "upstream" / "x-ui.sh"
+默认生成管理脚本 = 项目根目录 / "generated" / "x-ui-cn.sh"
 默认报告 = 项目根目录 / "i18n-report.md"
 
 英文提示模式 = re.compile(r"[A-Za-z][A-Za-z ]{3,}")
@@ -92,12 +94,20 @@ def 检查非输出逻辑未改变(上游内容: str, 生成内容: str) -> list
 
     for 行号, (原行, 新行, 可翻译) in enumerate(zip(上游行, 生成行, 标记), start=1):
         if not 可翻译 and 原行 != 新行:
+            if 是允许的下载地址替换(原行, 新行):
+                continue
             问题.append(f"第 {行号} 行非输出逻辑发生变化")
             if len(问题) >= 20:
                 问题.append("非输出逻辑变化超过 20 处，已停止继续列出")
                 break
 
     return 问题
+
+
+def 是允许的下载地址替换(原行: str, 新行: str) -> bool:
+    官方地址 = "https://raw.githubusercontent.com/MHSanaei/3x-ui/main/x-ui.sh"
+    中文地址 = "https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/main/generated/x-ui-cn.sh"
+    return 官方地址 in 原行 and 中文地址 in 新行 and 原行.replace(官方地址, 中文地址) == 新行
 
 
 def 检查_bash_语法(路径: Path) -> str | None:
@@ -116,14 +126,15 @@ def 检查变量未被汉化(内容: str) -> list[str]:
 
 
 def 检查菜单边框对齐(内容: str) -> list[str]:
-    匹配 = re.search(r"┌[^\n]+\n.*?└[─]+┘", 内容, re.S)
-    if not 匹配:
-        return ["未找到命令菜单边框，无法验证菜单对齐"]
+    匹配列表 = list(re.finditer(r"[┌╔][^\n]+\n.*?[└╚][─]+[┘╝]", 内容, re.S))
+    if not 匹配列表:
+        return ["未找到菜单边框，无法验证菜单对齐"]
 
-    行列表 = 匹配.group(0).splitlines()
-    宽度列表 = [显示宽度(去除_ansi_占位符(行)) for 行 in 行列表]
-    if len(set(宽度列表)) != 1:
-        return [f"命令菜单边框未对齐，行宽为：{宽度列表}"]
+    for 序号, 匹配 in enumerate(匹配列表, start=1):
+        行列表 = 匹配.group(0).splitlines()
+        宽度列表 = [显示宽度(去除_ansi_占位符(行)) for 行 in 行列表]
+        if len(set(宽度列表)) != 1:
+            return [f"第 {序号} 个菜单边框未对齐，行宽为：{宽度列表}"]
     return []
 
 
@@ -246,9 +257,20 @@ def main() -> int:
     阻断问题.extend(检查变量未被汉化(生成内容))
     阻断问题.extend(检查菜单边框对齐(生成内容))
 
+    if 默认上游管理脚本.exists() and 默认生成管理脚本.exists():
+        上游管理内容 = 默认上游管理脚本.read_text(encoding="utf-8")
+        生成管理内容 = 默认生成管理脚本.read_text(encoding="utf-8")
+        阻断问题.extend(f"管理脚本：{问题}" for 问题 in 检查非输出逻辑未改变(上游管理内容, 生成管理内容))
+        阻断问题.extend(f"管理脚本：{问题}" for 问题 in 检查变量未被汉化(生成管理内容))
+        阻断问题.extend(f"管理脚本：{问题}" for 问题 in 检查菜单边框对齐(生成管理内容))
+
     语法问题 = 检查_bash_语法(参数.generated)
     if 语法问题:
         阻断问题.append(f"生成脚本语法错误：{语法问题}")
+    if 默认生成管理脚本.exists():
+        管理脚本语法问题 = 检查_bash_语法(默认生成管理脚本)
+        if 管理脚本语法问题:
+            阻断问题.append(f"管理脚本语法错误：{管理脚本语法问题}")
 
     未翻译 = 提取可能未翻译文案(生成内容)
     写报告(参数.report, 未翻译, 阻断问题)

@@ -30,7 +30,9 @@ bash <(curl -Ls https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/ma
 ## 文件说明
 
 - `generated/install-cn.sh`：中文安装脚本，用户直接执行这个文件
+- `generated/x-ui-cn.sh`：安装后的中文 `x-ui` 管理脚本
 - `upstream/install.sh`：同步自官方的原始安装脚本
+- `upstream/x-ui.sh`：同步自官方的原始管理脚本
 - `translations.yml`：中文翻译映射表
 - `scripts/translate.py`：中文脚本生成器，包含中文菜单宽度排版逻辑
 - `scripts/validate.py`：生成结果验证器
