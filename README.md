@@ -1,6 +1,6 @@
 # 3x-ui 中文安装器
 
-[![自动同步](https://github.com/V2RaySSR/3x-ui-cn-installer/actions/workflows/sync.yml/badge.svg)](https://github.com/V2RaySSR/3x-ui-cn-installer/actions/workflows/sync.yml)
+[![CI](https://github.com/V2RaySSR/3x-ui-cn-installer/actions/workflows/sync.yml/badge.svg?branch=main&label=CI)](https://github.com/V2RaySSR/3x-ui-cn-installer/actions/workflows/sync.yml)
 
 自动同步官方 [3x-ui](https://github.com/MHSanaei/3x-ui) 安装脚本，并生成中文本地化安装脚本。
 
