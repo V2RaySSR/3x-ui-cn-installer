@@ -34,20 +34,25 @@ jobs:
       - name: 生成中文安装脚本
         run: python scripts/translate.py
 
+      - name: 验证中文安装脚本
+        run: |
+          bash -n upstream/install.sh
+          python scripts/validate.py --report /tmp/i18n-report.md
+
+      - name: 确认生成过程可重复
+        run: |
+          cp generated/install-cn.sh /tmp/install-cn.sh
+          python scripts/translate.py
+          cmp /tmp/install-cn.sh generated/install-cn.sh
+
       - name: 创建同步 PR
         uses: peter-evans/create-pull-request@v6
         with:
+          add-paths: |
+            upstream/install.sh
+            generated/install-cn.sh
           commit-message: "同步官方安装脚本并生成中文版"
           branch: "auto/sync-upstream-install"
           delete-branch: true
           title: "同步官方安装脚本并生成中文版"
-          body: |
-            本 PR 由 GitHub Actions 自动创建。
-
-            变更内容：
-            - 同步官方 3x-ui 最新安装脚本
-            - 根据 translations.yml 重新生成中文安装脚本
-
-            请重点确认：
-            - 官方脚本是否有新的交互文案需要补充翻译
-            - generated/install-cn.sh 是否只包含预期的中文本地化变化
+          body-path: /tmp/i18n-report.md
