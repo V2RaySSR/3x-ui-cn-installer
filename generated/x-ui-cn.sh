@@ -207,9 +207,9 @@ uninstall() {
     rm ${xui_folder}/ -rf
 
     echo ""
-    echo -e "卸载ed Successfully.\n"
-    echo "If you need to install this panel again, you can use below command:"
-    echo -e "${green}bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)${plain}"
+    echo -e "卸载成功。\n"
+    echo "如果需要重新安装面板，可以使用下面的中文安装命令："
+    echo -e "${green}bash <(curl -Ls https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/latest/generated/install-cn.sh)${plain}"
     echo ""
     # Trap the SIGTERM signal
     trap delete_script SIGTERM

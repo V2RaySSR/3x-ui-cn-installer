@@ -21,6 +21,12 @@
   - 原文: "Panel installed, Please do not reinstall"
     译文: "面板已安装，请勿重复安装"
 
+  - 原文: "Uninstalled Successfully."
+    译文: "卸载成功。"
+
+  - 原文: "If you need to install this panel again, you can use below command:"
+    译文: "如果需要重新安装面板，可以使用下面的中文安装命令："
+
   - 原文: "Please install the panel first"
     译文: "请先安装面板"
 

@@ -110,7 +110,12 @@ def 是允许的下载地址替换(原行: str, 新行: str) -> bool:
         "https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/main/generated/x-ui-cn.sh",
     ]
     中文地址 = "https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/latest/generated/x-ui-cn.sh"
-    return any(官方地址 in 原行 and 中文地址 in 新行 and 原行.replace(官方地址, 中文地址) == 新行 for 官方地址 in 官方地址列表)
+    if any(官方地址 in 原行 and 中文地址 in 新行 and 原行.replace(官方地址, 中文地址) == 新行 for 官方地址 in 官方地址列表):
+        return True
+
+    官方安装命令 = "bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)"
+    中文安装命令 = "bash <(curl -Ls https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/latest/generated/install-cn.sh)"
+    return 官方安装命令 in 原行 and 中文安装命令 in 新行 and 原行.replace(官方安装命令, 中文安装命令) == 新行
 
 
 def 检查_bash_语法(路径: Path) -> str | None:
