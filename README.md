@@ -8,7 +8,7 @@
 
 > 保持官方安装逻辑不变，仅汉化安装过程中的交互提示、菜单文字和状态文字。
 
-## 一键安装
+## 中文安装 3x-ui
 
 ```bash
 bash <(curl -Ls https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/main/generated/install-cn.sh)
@@ -47,7 +47,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/ma
 3. 执行发布前校验
 4. 创建同步 PR，并在 PR 正文写入校验报告
 
-PR 合并后，用户使用的一键安装命令就会自动指向最新版中文脚本。
+PR 合并后，用户使用的中文安装命令就会自动指向最新版脚本。
 
 ## 维护原则
 
