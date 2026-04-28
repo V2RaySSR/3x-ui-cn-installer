@@ -38,13 +38,16 @@ jobs:
       - name: 验证中文安装脚本
         run: |
           bash -n upstream/install.sh
+          bash -n upstream/x-ui.sh
           python scripts/validate.py --report /tmp/i18n-report.md
 
       - name: 确认生成过程可重复
         run: |
           cp generated/install-cn.sh /tmp/install-cn.sh
+          cp generated/x-ui-cn.sh /tmp/x-ui-cn.sh
           python scripts/translate.py
           cmp /tmp/install-cn.sh generated/install-cn.sh
+          cmp /tmp/x-ui-cn.sh generated/x-ui-cn.sh
 
       - name: 创建同步 PR
         uses: peter-evans/create-pull-request@v8
