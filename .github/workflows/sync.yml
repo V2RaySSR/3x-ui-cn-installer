@@ -16,10 +16,10 @@ jobs:
 
     steps:
       - name: 检出仓库
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: 准备 Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.x"
 
@@ -46,7 +46,7 @@ jobs:
           cmp /tmp/install-cn.sh generated/install-cn.sh
 
       - name: 创建同步 PR
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           add-paths: |
             upstream/install.sh
