@@ -14,25 +14,6 @@
 bash <(curl -Ls https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/main/generated/install-cn.sh)
 ```
 
-## 设计目标
-
-- 面向中文用户，降低安装和证书配置过程中的理解成本
-- 跟随官方安装脚本更新，不维护独立分叉逻辑
-- 只翻译用户可见输出，不改安装流程和系统操作
-- 通过自动化校验拦截危险变更，避免发布半坏脚本
-- PR 中自动给出同步校验报告，便于审查后再合并
-
-## 工作流
-
-```mermaid
-flowchart LR
-  A["官方 3x-ui install.sh"] --> B["同步到 upstream/install.sh"]
-  B --> C["translations.yml"]
-  C --> D["生成 generated/install-cn.sh"]
-  D --> E["语法与逻辑校验"]
-  E --> F["生成同步 PR"]
-```
-
 ## 自动校验
 
 每次同步都会执行以下检查：
