@@ -64,18 +64,22 @@ jobs:
 
       - name: 发布 latest 分支
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           rm -rf /tmp/3x-ui-cn-latest
           mkdir -p /tmp/3x-ui-cn-latest/generated
           cp generated/install-cn.sh /tmp/3x-ui-cn-latest/generated/install-cn.sh
           cp generated/x-ui-cn.sh /tmp/3x-ui-cn-latest/generated/x-ui-cn.sh
           cp generated/metadata.json /tmp/3x-ui-cn-latest/generated/metadata.json
+
           cd /tmp/3x-ui-cn-latest
           git init
           git checkout -b latest
-          git add generated/install-cn.sh generated/x-ui-cn.sh
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add generated/install-cn.sh generated/x-ui-cn.sh generated/metadata.json
           git commit -m "自动发布中文安装脚本"
+
           git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
           git push --force origin latest
 
