@@ -7,6 +7,7 @@ import argparse
 import re
 import subprocess
 import sys
+import unicodedata
 from pathlib import Path
 
 import translate
@@ -114,6 +115,31 @@ def 检查变量未被汉化(内容: str) -> list[str]:
     return 问题
 
 
+def 检查菜单边框对齐(内容: str) -> list[str]:
+    匹配 = re.search(r"┌[^\n]+\n.*?└[─]+┘", 内容, re.S)
+    if not 匹配:
+        return ["未找到命令菜单边框，无法验证菜单对齐"]
+
+    行列表 = 匹配.group(0).splitlines()
+    宽度列表 = [显示宽度(去除_ansi_占位符(行)) for 行 in 行列表]
+    if len(set(宽度列表)) != 1:
+        return [f"命令菜单边框未对齐，行宽为：{宽度列表}"]
+    return []
+
+
+def 去除_ansi_占位符(文本: str) -> str:
+    return re.sub(r"\$\{[^}]+\}", "", 文本)
+
+
+def 显示宽度(文本: str) -> int:
+    宽度 = 0
+    for 字符 in 文本:
+        if unicodedata.combining(字符):
+            continue
+        宽度 += 2 if unicodedata.east_asian_width(字符) in {"F", "W"} else 1
+    return 宽度
+
+
 def 提取可能未翻译文案(生成内容: str) -> list[str]:
     结果: list[str] = []
     已见: set[str] = set()
@@ -194,6 +220,7 @@ def 写报告(路径: Path, 未翻译: list[str], 阻断问题: list[str]) -> No
         行列表.append("- 生成脚本语法检查通过")
         行列表.append("- 非输出逻辑与官方脚本保持一致")
         行列表.append("- 未发现 Bash 变量被中文误替换")
+        行列表.append("- 命令菜单边框显示宽度一致")
 
     行列表.extend(["", "## 可能需要补充翻译的文案", ""])
     if 未翻译:
@@ -217,6 +244,7 @@ def main() -> int:
     阻断问题: list[str] = []
     阻断问题.extend(检查非输出逻辑未改变(上游内容, 生成内容))
     阻断问题.extend(检查变量未被汉化(生成内容))
+    阻断问题.extend(检查菜单边框对齐(生成内容))
 
     语法问题 = 检查_bash_语法(参数.generated)
     if 语法问题:

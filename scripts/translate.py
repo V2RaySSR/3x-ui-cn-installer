@@ -8,6 +8,7 @@ import os
 import re
 import stat
 import sys
+import unicodedata
 from pathlib import Path
 
 try:
@@ -101,6 +102,7 @@ def 生成中文脚本(原始内容: str, 翻译列表: list[dict[str, str]]) ->
             多行输出中 = not 多行输出中
 
     内容 = "".join(行列表)
+    内容 = 格式化中文命令菜单(内容)
 
     文件头 = """# 此文件由 scripts/translate.py 自动生成，请不要直接编辑。
 # 如需调整中文内容，请修改 translations.yml 后重新生成。
@@ -110,6 +112,64 @@ def 生成中文脚本(原始内容: str, 翻译列表: list[dict[str, str]]) ->
         第一行, 分隔符, 剩余内容 = 内容.partition("\n")
         return f"{第一行}\n{文件头}{剩余内容 if 分隔符 else ''}"
     return 文件头 + 内容
+
+
+def 格式化中文命令菜单(内容: str) -> str:
+    菜单模式 = re.compile(
+        r'echo -e "┌───────────────────────────────────────────────────────┐\n'
+        r'│  \$\{blue\}x-ui 控制菜单用法（子命令）：\$\{plain\}.*?'
+        r'└───────────────────────────────────────────────────────┘"',
+        re.S,
+    )
+    return 菜单模式.sub(生成中文命令菜单源码(), 内容)
+
+
+def 生成中文命令菜单源码() -> str:
+    命令列表 = [
+        ("x-ui", "管理脚本"),
+        ("x-ui start", "启动"),
+        ("x-ui stop", "停止"),
+        ("x-ui restart", "重启"),
+        ("x-ui status", "当前状态"),
+        ("x-ui settings", "当前设置"),
+        ("x-ui enable", "启用开机自启"),
+        ("x-ui disable", "禁用开机自启"),
+        ("x-ui log", "查看日志"),
+        ("x-ui banlog", "查看 Fail2ban 封禁日志"),
+        ("x-ui update", "更新"),
+        ("x-ui legacy", "旧版"),
+        ("x-ui install", "安装"),
+        ("x-ui uninstall", "卸载"),
+    ]
+    内宽 = 63
+    命令列宽 = 24
+    标题 = "x-ui 控制菜单用法（子命令）："
+    行列表 = [f'echo -e "┌{"─" * 内宽}┐']
+    行列表.append(f"│  ${{blue}}{标题}${{plain}}{空格(内宽 - 2 - 显示宽度(标题))}│")
+    行列表.append(f"│{空格(内宽)}│")
+
+    for 命令, 说明 in 命令列表:
+        左侧 = f"  ${{blue}}{命令}${{plain}}"
+        左侧宽度 = 2 + 显示宽度(命令)
+        中间空格数 = 命令列宽 - 左侧宽度
+        文本宽度 = 左侧宽度 + 中间空格数 + 2 + 显示宽度(说明)
+        行列表.append(f"│{左侧}{空格(中间空格数)}- {说明}{空格(内宽 - 文本宽度)}│")
+
+    行列表.append(f'└{"─" * 内宽}┘"')
+    return "\n".join(行列表)
+
+
+def 显示宽度(文本: str) -> int:
+    宽度 = 0
+    for 字符 in 文本:
+        if unicodedata.combining(字符):
+            continue
+        宽度 += 2 if unicodedata.east_asian_width(字符) in {"F", "W"} else 1
+    return 宽度
+
+
+def 空格(数量: int) -> str:
+    return " " * max(0, 数量)
 
 
 def 是输出语句(行: str) -> bool:
