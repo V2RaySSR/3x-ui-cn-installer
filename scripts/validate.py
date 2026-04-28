@@ -105,9 +105,12 @@ def 检查非输出逻辑未改变(上游内容: str, 生成内容: str) -> list
 
 
 def 是允许的下载地址替换(原行: str, 新行: str) -> bool:
-    官方地址 = "https://raw.githubusercontent.com/MHSanaei/3x-ui/main/x-ui.sh"
-    中文地址 = "https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/main/generated/x-ui-cn.sh"
-    return 官方地址 in 原行 and 中文地址 in 新行 and 原行.replace(官方地址, 中文地址) == 新行
+    官方地址列表 = [
+        "https://raw.githubusercontent.com/MHSanaei/3x-ui/main/x-ui.sh",
+        "https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/main/generated/x-ui-cn.sh",
+    ]
+    中文地址 = "https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/latest/generated/x-ui-cn.sh"
+    return any(官方地址 in 原行 and 中文地址 in 新行 and 原行.replace(官方地址, 中文地址) == 新行 for 官方地址 in 官方地址列表)
 
 
 def 检查_bash_语法(路径: Path) -> str | None:

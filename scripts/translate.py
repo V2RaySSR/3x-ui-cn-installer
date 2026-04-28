@@ -120,9 +120,14 @@ def 生成中文脚本(原始内容: str, 翻译列表: list[dict[str, str]]) ->
 
 
 def 使用中文管理脚本下载地址(内容: str) -> str:
-    官方地址 = "https://raw.githubusercontent.com/MHSanaei/3x-ui/main/x-ui.sh"
-    中文地址 = "https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/main/generated/x-ui-cn.sh"
-    return 内容.replace(官方地址, 中文地址)
+    官方地址列表 = [
+        "https://raw.githubusercontent.com/MHSanaei/3x-ui/main/x-ui.sh",
+        "https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/main/generated/x-ui-cn.sh",
+    ]
+    中文地址 = "https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/latest/generated/x-ui-cn.sh"
+    for 官方地址 in 官方地址列表:
+        内容 = 内容.replace(官方地址, 中文地址)
+    return 内容
 
 
 def 格式化中文命令菜单(内容: str) -> str:

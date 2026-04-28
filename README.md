@@ -10,8 +10,13 @@
 
 ## 中文安装 3x-ui
 
+<!-- sync-info:start -->
+官方脚本同步时间：`2026-04-28 15:47:38 CST`
+中文脚本生成时间：`2026-04-28 15:47:38 CST`
+<!-- sync-info:end -->
+
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/main/generated/install-cn.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/latest/generated/install-cn.sh)
 ```
 
 ## 自动校验
@@ -31,6 +36,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/ma
 
 - `generated/install-cn.sh`：中文安装脚本，用户直接执行这个文件
 - `generated/x-ui-cn.sh`：安装后的中文 `x-ui` 管理脚本
+- `generated/metadata.json`：最近一次官方同步和中文生成时间
 - `upstream/install.sh`：同步自官方的原始安装脚本
 - `upstream/x-ui.sh`：同步自官方的原始管理脚本
 - `translations.yml`：中文翻译映射表
@@ -47,9 +53,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/ma
 1. 同步官方最新版 `install.sh` 和 `x-ui.sh`
 2. 重新生成 `generated/install-cn.sh` 和 `generated/x-ui-cn.sh`
 3. 执行发布前校验
-4. 创建同步 PR，并在 PR 正文写入校验报告
+4. 自动更新 `latest` 分支，用户安装命令会立即使用新版
+5. 同时创建同步 PR，便于后续补充翻译并合并到 `main`
 
-PR 合并后，用户使用的中文安装命令就会自动指向最新版脚本。
+`main` 用于人工审核和归档，`latest` 用于自动发布给用户。
 
 ## 维护原则
 

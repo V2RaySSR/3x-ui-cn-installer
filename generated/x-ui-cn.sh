@@ -148,7 +148,7 @@ update_menu() {
         return 0
     fi
 
-    curl -fLRo /usr/bin/x-ui https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/main/generated/x-ui-cn.sh
+    curl -fLRo /usr/bin/x-ui https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/latest/generated/x-ui-cn.sh
     chmod +x ${xui_folder}/x-ui.sh
     chmod +x /usr/bin/x-ui
 

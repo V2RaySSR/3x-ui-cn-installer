@@ -41,6 +41,19 @@ jobs:
           bash -n upstream/x-ui.sh
           python scripts/validate.py --report /tmp/i18n-report.md
 
+      - name: 更新同步时间
+        run: python scripts/update_metadata.py
+
+      - name: 发布同步时间到 README
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md generated/metadata.json
+          if ! git diff --cached --quiet; then
+            git commit -m "更新同步时间"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
+
       - name: 确认生成过程可重复
         run: |
           cp generated/install-cn.sh /tmp/install-cn.sh
@@ -48,6 +61,23 @@ jobs:
           python scripts/translate.py
           cmp /tmp/install-cn.sh generated/install-cn.sh
           cmp /tmp/x-ui-cn.sh generated/x-ui-cn.sh
+
+      - name: 发布 latest 分支
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -rf /tmp/3x-ui-cn-latest
+          mkdir -p /tmp/3x-ui-cn-latest/generated
+          cp generated/install-cn.sh /tmp/3x-ui-cn-latest/generated/install-cn.sh
+          cp generated/x-ui-cn.sh /tmp/3x-ui-cn-latest/generated/x-ui-cn.sh
+          cp generated/metadata.json /tmp/3x-ui-cn-latest/generated/metadata.json
+          cd /tmp/3x-ui-cn-latest
+          git init
+          git checkout -b latest
+          git add generated/install-cn.sh generated/x-ui-cn.sh
+          git commit -m "自动发布中文安装脚本"
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          git push --force origin latest
 
       - name: 创建同步 PR
         uses: peter-evans/create-pull-request@v8

@@ -823,7 +823,7 @@ install_x-ui() {
             exit 1
         fi
     fi
-    curl -4fLRo /usr/bin/x-ui-temp https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/main/generated/x-ui-cn.sh
+    curl -4fLRo /usr/bin/x-ui-temp https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/latest/generated/x-ui-cn.sh
     if [[ $? -ne 0 ]]; then
         echo -e "${red}下载 x-ui.sh 失败${plain}"
         exit 1
