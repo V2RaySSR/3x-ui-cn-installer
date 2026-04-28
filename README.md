@@ -1,6 +1,6 @@
 # 3x-ui 中文安装器
 
-[![同步官方安装脚本并生成中文版](https://github.com/V2RaySSR/3x-ui-cn-installer/actions/workflows/sync.yml/badge.svg)](https://github.com/V2RaySSR/3x-ui-cn-installer/actions/workflows/sync.yml)
+[![自动同步](https://github.com/V2RaySSR/3x-ui-cn-installer/actions/workflows/sync.yml/badge.svg)](https://github.com/V2RaySSR/3x-ui-cn-installer/actions/workflows/sync.yml)
 
 自动同步官方 [3x-ui](https://github.com/MHSanaei/3x-ui) 安装脚本，并生成中文本地化安装脚本。
 
@@ -45,25 +45,6 @@ flowchart LR
 - 确认生成过程可重复
 
 如果核心逻辑存在意外变化，自动流程会失败，不会生成可合并的同步结果。
-
-## 汉化范围
-
-已覆盖：
-
-- 安装过程提示
-- SSL 证书配置提示
-- 错误提示
-- 安装完成信息
-- 常用命令菜单
-
-不汉化、不修改：
-
-- 变量名
-- 函数名
-- 下载地址
-- 系统服务配置
-- 安装逻辑
-- 官方项目名称和命令名称
 
 ## 文件说明
 

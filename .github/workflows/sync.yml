@@ -1,4 +1,4 @@
-name: 同步官方安装脚本并生成中文版
+name: 自动同步
 
 on:
   schedule:
