@@ -1,0 +1,133 @@
+# 3x-ui 安装脚本中文翻译表
+#
+# 维护建议：
+# - 优先翻译完整句子，避免替换过短词汇导致误伤代码逻辑
+# - 只翻译用户可见的输出文本、菜单文本、状态文本
+# - 不在这里修改命令、变量名、函数名、URL 或系统路径
+
+替换:
+  - 原文: "Please run this script as root"
+    译文: "请使用 root 用户运行此脚本"
+
+  - 原文: "Fatal error"
+    译文: "致命错误"
+
+  - 原文: "Please run this script with root privilege"
+    译文: "请使用 root 权限运行此脚本"
+
+  - 原文: "This script must be run as root"
+    译文: "此脚本必须以 root 权限运行"
+
+  - 原文: "Failed to check the system OS, please contact the author!"
+    译文: "检测系统失败，请联系作者！"
+
+  - 原文: "The OS release is:"
+    译文: "当前系统发行版："
+
+  - 原文: "Unsupported CPU architecture!"
+    译文: "不支持的 CPU 架构！"
+
+  - 原文: "Unsupported operating system"
+    译文: "不支持的操作系统"
+
+  - 原文: "Installing acme.sh for SSL certificate management..."
+    译文: "正在安装 acme.sh 用于 SSL 证书管理..."
+
+  - 原文: "Failed to install acme.sh"
+    译文: "acme.sh 安装失败"
+
+  - 原文: "acme.sh installed successfully"
+    译文: "acme.sh 安装成功"
+
+  - 原文: "Setting up SSL certificate..."
+    译文: "正在设置 SSL 证书..."
+
+  - 原文: "Please enter your domain name:"
+    译文: "请输入你的域名："
+
+  - 原文: "Domain name cannot be empty. Please try again."
+    译文: "域名不能为空，请重试。"
+
+  - 原文: "Please choose which port to use (default is 80):"
+    译文: "请选择要使用的端口（默认 80）："
+
+  - 原文: "Stopping panel temporarily..."
+    译文: "正在临时停止面板..."
+
+  - 原文: "Choose SSL certificate setup method:"
+    译文: "请选择 SSL 证书设置方式："
+
+  - 原文: "Custom SSL Certificate (Path to existing files)"
+    译文: "自定义 SSL 证书（使用已有文件路径）"
+
+  - 原文: "Please set up the panel port:"
+    译文: "请设置面板端口："
+
+  - 原文: "Your Panel Port is:"
+    译文: "你的面板端口是："
+
+  - 原文: "Generated random port:"
+    译文: "已生成随机端口："
+
+  - 原文: "Panel Installation Complete!"
+    译文: "面板安装完成！"
+
+  - 原文: "Username"
+    译文: "用户名"
+
+  - 原文: "Password"
+    译文: "密码"
+
+  - 原文: "Port"
+    译文: "端口"
+
+  - 原文: "Panel"
+    译文: "面板"
+
+  - 原文: "x-ui"
+    译文: "x-ui"
+
+  - 原文: "3x-ui"
+    译文: "3x-ui"
+
+  - 原文: "Access URL"
+    译文: "访问地址"
+
+  - 原文: "IMPORTANT: Save these credentials securely!"
+    译文: "重要：请安全保存这些登录信息！"
+
+  - 原文: "Got x-ui latest version:"
+    译文: "已获取 x-ui 最新版本："
+
+  - 原文: "Downloading x-ui failed, please be sure that your server can access GitHub"
+    译文: "下载 x-ui 失败，请确认你的服务器可以访问 GitHub"
+
+  - 原文: "Running..."
+    译文: "运行中..."
+
+  - 原文: "Current Status"
+    译文: "当前状态"
+
+  - 原文: "Enable Autostart on OS Startup"
+    译文: "开机自启"
+
+  - 原文: "Disable Autostart on OS Startup"
+    译文: "关闭开机自启"
+
+  - 原文: "Start"
+    译文: "启动"
+
+  - 原文: "Stop"
+    译文: "停止"
+
+  - 原文: "Restart"
+    译文: "重启"
+
+  - 原文: "Update"
+    译文: "更新"
+
+  - 原文: "Install"
+    译文: "安装"
+
+  - 原文: "Uninstall"
+    译文: "卸载"
