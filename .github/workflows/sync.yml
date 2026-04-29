@@ -2,7 +2,8 @@ name: 自动同步
 
 on:
   schedule:
-    - cron: "0 3 * * *"
+    # 北京时间每天 03:00，GitHub Actions cron 使用 UTC 时间。
+    - cron: "0 19 * * *"
   workflow_dispatch:
 
 permissions:
