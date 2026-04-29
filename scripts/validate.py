@@ -27,10 +27,14 @@ import translate
     "ACME",
     "API",
     "Arch",
+    "BBR",
     "Cert",
+    "Cloudflare",
+    "CUBIC",
     "CPU",
     "ED25519",
     "Fail2ban",
+    "Geo",
     "GitHub",
     "HTTP",
     "IP",
@@ -40,10 +44,15 @@ import translate
     "Let's Encrypt",
     "Reloadcmd",
     "SSL",
+    "Speedtest",
+    "UFW",
     "WebBasePath",
+    "Xray",
     "acme.sh",
     "cron",
     "curl",
+    "jail",
+    "listenIP",
     "etckeeper",
     "fullchain",
     "https",
@@ -167,19 +176,36 @@ def 提取可能未翻译文案(生成内容: str) -> list[str]:
     for 行, 是输出 in zip(去除生成文件头(生成内容).splitlines(), 标记):
         if not 是输出:
             continue
-        if "grep -q" in 行 or "echo \"$" in 行 or "echo \"${" in 行:
+        if "grep -q" in 行:
             continue
         候选 = 清理输出行(行)
         if not 候选:
             continue
         if not 英文提示模式.search(候选):
             continue
-        if all(片段 not in 候选 for 片段 in 允许英文片段):
+        待检查 = 去除允许英文片段(候选)
+        if 英文提示模式.search(待检查):
             if 候选 not in 已见:
                 结果.append(候选)
                 已见.add(候选)
 
     return 结果
+
+
+def 去除允许英文片段(文本: str) -> str:
+    结果 = 文本
+    for 片段 in sorted(允许英文片段, key=len, reverse=True):
+        结果 = 结果.replace(片段, " ")
+    结果 = re.sub(r"https?://\S+", " ", 结果)
+    结果 = re.sub(r"\b[a-z0-9_.+-]+/[a-z0-9_.+-]+\b", " ", 结果, flags=re.I)
+    结果 = re.sub(r"\b[a-z0-9_.+-]+\.(dat|pem|key|log|conf|service|sh|db)\b", " ", 结果, flags=re.I)
+    结果 = re.sub(r"\b[a-z0-9_.+-]*x-ui[a-z0-9_.+-]*\b", " ", 结果, flags=re.I)
+    结果 = re.sub(r"\s+", " ", 结果)
+    return 结果
+
+
+def 带来源(来源: str, 文案列表: list[str]) -> list[str]:
+    return [f"{来源}：{文案}" for 文案 in 文案列表]
 
 
 def 清理输出行(行: str) -> str:
@@ -280,7 +306,9 @@ def main() -> int:
         if 管理脚本语法问题:
             阻断问题.append(f"管理脚本语法错误：{管理脚本语法问题}")
 
-    未翻译 = 提取可能未翻译文案(生成内容)
+    未翻译 = 带来源("安装脚本", 提取可能未翻译文案(生成内容))
+    if 默认生成管理脚本.exists():
+        未翻译.extend(带来源("管理脚本", 提取可能未翻译文案(默认生成管理脚本.read_text(encoding="utf-8"))))
     写报告(参数.report, 未翻译, 阻断问题)
 
     if 未翻译:

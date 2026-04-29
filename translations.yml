@@ -54,6 +54,192 @@
   - 原文: "Please enter your selection [0-26]:"
     译文: "请输入你的选择 [0-26]："
 
+  - 原文: "Restart the panel, Attention: Restarting the panel will also restart xray"
+    译文: "是否重启面板？注意：重启面板也会重启 Xray"
+
+  - 原文: "Press enter to return to the main menu:"
+    译文: "按回车返回主菜单："
+
+  - 原文: "This function will update all x-ui components to the latest version, and the data will not be lost. Do you want to continue?"
+    译文: "此功能会将所有 x-ui 组件更新到最新版本，数据不会丢失。是否继续？"
+
+  - 原文: "Cancelled"
+    译文: "已取消"
+
+  - 原文: "Update is complete, Panel has automatically restarted"
+    译文: "更新完成，面板已自动重启"
+
+  - 原文: "Updating Menu"
+    译文: "正在更新菜单"
+
+  - 原文: "This function will update the menu to the latest changes."
+    译文: "此功能会将菜单更新到最新版本。"
+
+  - 原文: "Update successful. The panel has automatically restarted."
+    译文: "更新成功，面板已自动重启。"
+
+  - 原文: "Failed to update the menu."
+    译文: "菜单更新失败。"
+
+  - 原文: "Enter the panel version (like 2.4.0):"
+    译文: "请输入面板版本（例如 2.4.0）："
+
+  - 原文: "Panel version cannot be empty. Exiting."
+    译文: "面板版本不能为空，正在退出。"
+
+  - 原文: "Downloading and installing panel version"
+    译文: "正在下载并安装面板版本"
+
+  - 原文: "Are you sure you want to uninstall the panel? xray will also uninstalled!"
+    译文: "确定要卸载面板吗？Xray 也会被卸载！"
+
+  - 原文: "Are you sure to reset the username and password of the panel?"
+    译文: "确定要重置面板用户名和密码吗？"
+
+  - 原文: "Please set the login username [default is a random username]:"
+    译文: "请设置登录用户名（默认随机生成）："
+
+  - 原文: "Please set the login password [default is a random password]:"
+    译文: "请设置登录密码（默认随机生成）："
+
+  - 原文: "Do you want to disable currently configured two-factor authentication? (y/n):"
+    译文: "是否禁用当前已配置的双因素认证？(y/n)："
+
+  - 原文: "Two factor authentication has been disabled."
+    译文: "双因素认证已禁用。"
+
+  - 原文: "Panel login username has been reset to:"
+    译文: "面板登录用户名已重置为："
+
+  - 原文: "Panel login password has been reset to:"
+    译文: "面板登录密码已重置为："
+
+  - 原文: "Please use the new login username and password to access the X-UI panel. Also remember them!"
+    译文: "请使用新的登录用户名和密码访问 X-UI 面板，并妥善保存！"
+
+  - 原文: "Resetting Web Base Path"
+    译文: "正在重置 Web 入口路径"
+
+  - 原文: "Are you sure you want to reset the web base path? (y/n):"
+    译文: "确定要重置 Web 入口路径吗？(y/n)："
+
+  - 原文: "Operation canceled."
+    译文: "操作已取消。"
+
+  - 原文: "Web base path has been reset to:"
+    译文: "Web 入口路径已重置为："
+
+  - 原文: "Please use the new web base path to access the panel."
+    译文: "请使用新的 Web 入口路径访问面板。"
+
+  - 原文: "Are you sure you want to reset all panel settings, Account data will not be lost, Username and password will not change"
+    译文: "确定要重置所有面板设置吗？账号数据不会丢失，用户名和密码不会改变"
+
+  - 原文: "All panel settings have been reset to default."
+    译文: "所有面板设置已恢复为默认值。"
+
+  - 原文: "get current settings error, please check logs"
+    译文: "获取当前设置失败，请检查日志"
+
+  - 原文: "WARNING: No SSL certificate configured!"
+    译文: "警告：未配置 SSL 证书！"
+
+  - 原文: "You can get a Let's Encrypt certificate for your IP address (valid ~6 days, auto-renews)."
+    译文: "可以为你的 IP 地址申请 Let's Encrypt 证书（有效期约 6 天，自动续期）。"
+
+  - 原文: "Generate SSL certificate for IP now? [y/N]:"
+    译文: "现在为 IP 生成 SSL 证书吗？[y/N]："
+
+  - 原文: "IP certificate setup failed."
+    译文: "IP 证书设置失败。"
+
+  - 原文: "You can try again via option 19 (SSL Certificate Management)."
+    译文: "你可以稍后通过选项 19（SSL 证书管理）重试。"
+
+  - 原文: "For security, please configure SSL certificate using option 19 (SSL Certificate Management)"
+    译文: "为了安全，请使用选项 19（SSL 证书管理）配置 SSL 证书"
+
+  - 原文: "Enter port number[1-65535]:"
+    译文: "请输入端口号 [1-65535]："
+
+  - 原文: "The port is set, Please restart the panel now, and use the new port"
+    译文: "端口已设置，请立即重启面板，并使用新端口"
+
+  - 原文: "to access web panel"
+    译文: "访问 Web 面板"
+
+  - 原文: "Panel is running, No need to start again, If you need to restart, please select restart"
+    译文: "面板正在运行，无需再次启动；如需重启，请选择重启"
+
+  - 原文: "x-ui Started Successfully"
+    译文: "x-ui 启动成功"
+
+  - 原文: "panel Failed to start, Probably because it takes longer than two seconds to start, Please check the log information later"
+    译文: "面板启动失败，可能是启动时间超过两秒，请稍后检查日志信息"
+
+  - 原文: "Panel stopped, No need to stop again!"
+    译文: "面板已停止，无需再次停止！"
+
+  - 原文: "x-ui and xray stopped successfully"
+    译文: "x-ui 和 Xray 已成功停止"
+
+  - 原文: "Panel stop failed, Probably because the stop time exceeds two seconds, Please check the log information later"
+    译文: "面板停止失败，可能是停止时间超过两秒，请稍后检查日志信息"
+
+  - 原文: "x-ui and xray Restarted successfully"
+    译文: "x-ui 和 Xray 已成功重启"
+
+  - 原文: "Panel restart failed, Probably because it takes longer than two seconds to start, Please check the log information later"
+    译文: "面板重启失败，可能是启动时间超过两秒，请稍后检查日志信息"
+
+  - 原文: "xray-core Restart signal sent successfully, Please check the log information to confirm whether xray restarted successfully"
+    译文: "已成功发送 xray-core 重启信号，请检查日志确认 Xray 是否重启成功"
+
+  - 原文: "Install Firewall"
+    译文: "安装防火墙"
+
+  - 原文: "Port List [numbered]"
+    译文: "端口列表（带编号）"
+
+  - 原文: "Open Ports"
+    译文: "开放端口"
+
+  - 原文: "Delete Ports from List"
+    译文: "从列表删除端口"
+
+  - 原文: "Enable Firewall"
+    译文: "启用防火墙"
+
+  - 原文: "Disable Firewall"
+    译文: "禁用防火墙"
+
+  - 原文: "Firewall Status"
+    译文: "防火墙状态"
+
+  - 原文: "Back to Main Menu"
+    译文: "返回主菜单"
+
+  - 原文: "Invalid option. Please select a valid number."
+    译文: "选项无效，请选择有效数字。"
+
+  - 原文: "ufw firewall is not installed. Installing now..."
+    译文: "未安装 ufw 防火墙，正在安装..."
+
+  - 原文: "ufw firewall is already installed"
+    译文: "ufw 防火墙已安装"
+
+  - 原文: "Firewall is already active"
+    译文: "防火墙已启用"
+
+  - 原文: "Activating firewall..."
+    译文: "正在启用防火墙..."
+
+  - 原文: "Enter the ports you want to open (e.g. 80,443,2053 or range 400-500):"
+    译文: "请输入要开放的端口（例如 80,443,2053 或范围 400-500）："
+
+  - 原文: "Error: Invalid input. Please enter a comma-separated list of ports or a range of ports (e.g. 80,443,2053 or 400-500)."
+    译文: "错误：输入无效。请输入逗号分隔的端口列表或端口范围（例如 80,443,2053 或 400-500）。"
+
   - 原文: "Arch:"
     译文: "系统架构："
 
@@ -575,3 +761,585 @@
 
   - 原文: "Running..."
     译文: "运行中..."
+
+  - 原文: "[Default $2]:"
+    译文: "[默认 $2]："
+
+  - 原文: "x-ui Failed to set Autostart"
+    译文: "x-ui 设置开机自启失败"
+
+  - 原文: "x-ui Failed to cancel autostart"
+    译文: "x-ui 取消开机自启失败"
+
+  - 原文: "Failed to replace BBR with CUBIC. Please check your system configuration."
+    译文: "将 BBR 替换为 CUBIC 失败，请检查系统配置。"
+
+  - 原文: "Failed to download script, Please check whether the machine can connect Github"
+    译文: "下载脚本失败，请检查服务器是否可以连接 GitHub"
+
+  - 原文: "Upgrade script succeeded, Please rerun the script"
+    译文: "脚本更新成功，请重新运行脚本"
+
+  - 原文: "Install Firewall"
+    译文: "安装防火墙"
+
+  - 原文: "Open Ports"
+    译文: "开放端口"
+
+  - 原文: "Delete Ports from List"
+    译文: "从列表中删除端口"
+
+  - 原文: "Ports from List"
+    译文: "列表中的端口"
+
+  - 原文: "Enable Firewall"
+    译文: "启用防火墙"
+
+  - 原文: "Disable Firewall"
+    译文: "禁用防火墙"
+
+  - 原文: "Opened the specified ports:"
+    译文: "已开放指定端口："
+
+  - 原文: "Current UFW rules:"
+    译文: "当前 UFW 规则："
+
+  - 原文: "Enter your choice (1 or 2):"
+    译文: "请输入你的选择（1 或 2）："
+
+  - 原文: "Enter the rule numbers you want to delete (1, 2, etc.):"
+    译文: "请输入要删除的规则编号（如 1, 2）："
+
+  - 原文: "Error: Invalid input. Please enter a comma-separated list of rule numbers."
+    译文: "错误：输入无效。请输入用英文逗号分隔的规则编号。"
+
+  - 原文: "Failed to delete rule number"
+    译文: "删除规则编号失败"
+
+  - 原文: "Enter the ports you want to delete (e.g. 80,443,2053 or range 400-500):"
+    译文: "请输入要删除的端口（如 80,443,2053 或范围 400-500）："
+
+  - 原文: "Deleted the specified ports:"
+    译文: "已删除指定端口："
+
+  - 原文: "Invalid choice. Please enter 1 or 2."
+    译文: "选项无效，请输入 1 或 2。"
+
+  - 原文: "Installing acme.sh..."
+    译文: "正在安装 acme.sh..."
+
+  - 原文: "Installation of acme.sh failed."
+    译文: "acme.sh 安装失败。"
+
+  - 原文: "Installation of acme.sh succeeded."
+    译文: "acme.sh 安装成功。"
+
+  - 原文: "Please enter a domain from the list to revoke the certificate:"
+    译文: "请输入列表中要吊销证书的域名："
+
+  - 原文: "Please enter a domain from the list to renew the SSL certificate:"
+    译文: "请输入列表中要续期 SSL 证书的域名："
+
+  - 原文: "Please choose a domain to set the panel paths:"
+    译文: "请选择要设置到面板路径的域名："
+
+  - 原文: "Panel paths set for domain:"
+    译文: "已为域名设置面板路径："
+
+  - 原文: "Certificate or private key not found for domain:"
+    译文: "未找到该域名的证书或私钥："
+
+  - 原文: "Invalid domain entered."
+    译文: "输入的域名无效。"
+
+  - 原文: "Let's Encrypt SSL Certificate for IP Address"
+    译文: "Let's Encrypt IP 地址 SSL 证书"
+
+  - 原文: "This will obtain a certificate for your server's IP using the shortlived profile."
+    译文: "这将使用短有效期配置为服务器 IP 申请证书。"
+
+  - 原文: "Port 80 must be open and accessible from the internet."
+    译文: "80 端口必须开放，并且可从公网访问。"
+
+  - 原文: "Do you want to proceed?"
+    译文: "是否继续？"
+
+  - 原文: "Starting automatic SSL certificate generation for server IP..."
+    译文: "开始为服务器 IP 自动生成 SSL 证书..."
+
+  - 原文: "Using Let's Encrypt shortlived profile (~6 days validity, auto-renews)"
+    译文: "使用 Let's Encrypt 短有效期配置（约 6 天有效期，自动续期）"
+
+  - 原文: "Failed to get server IP address"
+    译文: "获取服务器 IP 地址失败"
+
+  - 原文: "Server IP detected:"
+    译文: "检测到服务器 IP："
+
+  - 原文: "acme.sh not found, installing..."
+    译文: "未找到 acme.sh，正在安装..."
+
+  - 原文: "to issue certificate for IP:"
+    译文: "为 IP 签发证书："
+
+  - 原文: "Reminder: Let's Encrypt still reaches port 80; forward external port 80 to"
+    译文: "提醒：Let's Encrypt 仍会访问 80 端口；请将外部 80 端口转发到"
+
+  - 原文: "for validation."
+    译文: "以完成验证。"
+
+  - 原文: "is currently in use."
+    译文: "当前已被占用。"
+
+  - 原文: "is busy; cannot proceed with issuance."
+    译文: "正忙，无法继续签发。"
+
+  - 原文: "Make sure port"
+    译文: "请确认端口"
+
+  - 原文: "is open and the server is accessible from the internet"
+    译文: "已开放，并且服务器可从公网访问"
+
+  - 原文: "Certificate issued successfully for IP:"
+    译文: "已成功为 IP 签发证书："
+
+  - 原文: "Certificate configured for panel"
+    译文: "证书已配置到面板"
+
+  - 原文: "Validity: ~6 days (auto-renews via acme.sh cron)"
+    译文: "有效期：约 6 天（通过 acme.sh 定时任务自动续期）"
+
+  - 原文: "acme.sh could not be found. we will install it"
+    译文: "未找到 acme.sh，将为你安装"
+
+  - 原文: "acme.sh could not be found. We will install it."
+    译文: "未找到 acme.sh，将为你安装。"
+
+  - 原文: "install acme failed, please check logs"
+    译文: "安装 acme.sh 失败，请检查日志"
+
+  - 原文: "install socat failed, please check logs"
+    译文: "安装 socat 失败，请检查日志"
+
+  - 原文: "install socat succeed..."
+    译文: "socat 安装成功..."
+
+  - 原文: "Preset:"
+    译文: "预设："
+
+  - 原文: "so it won't raise an error if other services fails"
+    译文: "这样其他服务失败时不会影响 x-ui 重启"
+
+  - 原文: "Please enter your reloadcmd (example: systemctl reload nginx ; x-ui restart):"
+    译文: "请输入自定义 reloadcmd（示例：systemctl reload nginx ; x-ui restart）："
+
+  - 原文: "Your reloadcmd is:"
+    译文: "你的 reloadcmd 是："
+
+  - 原文: "Auto renew failed, certificate details:"
+    译文: "自动续期设置失败，证书详情："
+
+  - 原文: "****** Instructions for Use ******"
+    译文: "****** 使用说明 ******"
+
+  - 原文: "Follow the steps below to complete the process:"
+    译文: "请按以下步骤完成流程："
+
+  - 原文: "Cloudflare Registered E-mail."
+    译文: "Cloudflare 注册邮箱。"
+
+  - 原文: "Cloudflare Global API Key."
+    译文: "Cloudflare 全局 API Key。"
+
+  - 原文: "The Domain Name."
+    译文: "域名。"
+
+  - 原文: "Once the certificate is issued, you will be prompted to set the certificate for the panel (optional)."
+    译文: "证书签发后，会提示你是否将证书设置到面板（可选）。"
+
+  - 原文: "The script also supports automatic renewal of the SSL certificate after installation."
+    译文: "脚本也支持在安装后自动续期 SSL 证书。"
+
+  - 原文: "Do you confirm the information and wish to proceed? [y/n]"
+    译文: "确认信息无误并继续吗？[y/n]"
+
+  - 原文: "Please set a domain name:"
+    译文: "请设置域名："
+
+  - 原文: "Input your domain here:"
+    译文: "请在此输入域名："
+
+  - 原文: "Your domain name is set to:"
+    译文: "你的域名已设置为："
+
+  - 原文: "Please set the API key:"
+    译文: "请设置 API Key："
+
+  - 原文: "Input your key here:"
+    译文: "请在此输入 Key："
+
+  - 原文: "Your API key is:"
+    译文: "你的 API Key 是："
+
+  - 原文: "Please set up registered email:"
+    译文: "请设置注册邮箱："
+
+  - 原文: "Input your email here:"
+    译文: "请在此输入邮箱："
+
+  - 原文: "Your registered email address is:"
+    译文: "你的注册邮箱是："
+
+  - 原文: "Default CA, Let'sEncrypt fail, script exiting..."
+    译文: "默认 CA Let'sEncrypt 失败，脚本退出..."
+
+  - 原文: "Certificate issuance failed, script exiting..."
+    译文: "证书签发失败，脚本退出..."
+
+  - 原文: "Certificate issued successfully, Installing..."
+    译文: "证书签发成功，正在安装..."
+
+  - 原文: "Failed to create directory:"
+    译文: "创建目录失败："
+
+  - 原文: "Certificate installation failed, script exiting..."
+    译文: "证书安装失败，脚本退出..."
+
+  - 原文: "Certificate installed successfully, Turning on automatic updates..."
+    译文: "证书安装成功，正在启用自动更新..."
+
+  - 原文: "Auto update setup failed, script exiting..."
+    译文: "自动更新设置失败，脚本退出..."
+
+  - 原文: "The certificate is installed and auto-renewal is turned on. Specific information is as follows:"
+    译文: "证书已安装并开启自动续期，详细信息如下："
+
+  - 原文: "Installing Speedtest using snap..."
+    译文: "正在通过 snap 安装 Speedtest..."
+
+  - 原文: "Error: Package manager not found. You may need to install Speedtest manually."
+    译文: "错误：未找到包管理器，可能需要手动安装 Speedtest。"
+
+  - 原文: "Installing Speedtest using"
+    译文: "正在安装 Speedtest，使用包管理器："
+
+  - 原文: "Install Fail2ban and configure IP Limit"
+    译文: "安装 Fail2ban 并配置 IP 限制"
+
+  - 原文: "Change Ban Duration"
+    译文: "修改封禁时长"
+
+  - 原文: "Unban Everyone"
+    译文: "解除所有封禁"
+
+  - 原文: "Ban Logs"
+    译文: "封禁日志"
+
+  - 原文: "Ban an IP Address"
+    译文: "封禁 IP 地址"
+
+  - 原文: "Unban an IP Address"
+    译文: "解除 IP 地址封禁"
+
+  - 原文: "Real-Time Logs"
+    译文: "实时日志"
+
+  - 原文: "Service Status"
+    译文: "服务状态"
+
+  - 原文: "Service Restart"
+    译文: "重启服务"
+
+  - 原文: "Uninstall Fail2ban and IP Limit"
+    译文: "卸载 Fail2ban 和 IP 限制"
+
+  - 原文: "Proceed with installation of Fail2ban & IP Limit?"
+    译文: "是否继续安装 Fail2ban 和 IP 限制？"
+
+  - 原文: "Please enter new Ban Duration in Minutes [default 30]:"
+    译文: "请输入新的封禁时长，单位分钟 [默认 30]："
+
+  - 原文: "is not a number! Please, try again."
+    译文: "不是数字！请重试。"
+
+  - 原文: "Proceed with Unbanning everyone from IP Limit jail?"
+    译文: "是否解除 IP 限制 jail 中的全部封禁？"
+
+  - 原文: "All users Unbanned successfully."
+    译文: "已成功解除所有用户封禁。"
+
+  - 原文: "Enter the IP address you want to ban:"
+    译文: "请输入要封禁的 IP 地址："
+
+  - 原文: "IP Address"
+    译文: "IP 地址"
+
+  - 原文: "has been banned successfully."
+    译文: "已成功封禁。"
+
+  - 原文: "Invalid IP address format! Please try again."
+    译文: "IP 地址格式无效！请重试。"
+
+  - 原文: "Enter the IP address you want to unban:"
+    译文: "请输入要解除封禁的 IP 地址："
+
+  - 原文: "has been unbanned successfully."
+    译文: "已成功解除封禁。"
+
+  - 原文: "Fail2ban is not installed. Installing now...!"
+    译文: "未安装 Fail2ban，正在安装...！"
+
+  - 原文: "Unsupported operating system. Please check the script and install the necessary packages manually."
+    译文: "不支持的操作系统。请检查脚本并手动安装所需软件包。"
+
+  - 原文: "Fail2ban installation failed."
+    译文: "Fail2ban 安装失败。"
+
+  - 原文: "Fail2ban installed successfully!"
+    译文: "Fail2ban 安装成功！"
+
+  - 原文: "Fail2ban is already installed."
+    译文: "Fail2ban 已安装。"
+
+  - 原文: "Configuring IP Limit..."
+    译文: "正在配置 IP 限制..."
+
+  - 原文: "IP Limit installed and configured successfully!"
+    译文: "IP 限制已安装并配置成功！"
+
+  - 原文: "Only remove IP Limit configurations"
+    译文: "仅删除 IP 限制配置"
+
+  - 原文: "IP Limit removed successfully!"
+    译文: "IP 限制已成功删除！"
+
+  - 原文: "Fail2ban and IP Limit removed successfully!"
+    译文: "Fail2ban 和 IP 限制已成功删除！"
+
+  - 原文: "Checking ban logs..."
+    译文: "正在检查封禁日志..."
+
+  - 原文: "Fail2ban service is not running!"
+    译文: "Fail2ban 服务未运行！"
+
+  - 原文: "Recent system ban activities from fail2ban.log:"
+    译文: "fail2ban.log 中最近的系统封禁活动："
+
+  - 原文: "No recent system ban activities found"
+    译文: "未找到最近的系统封禁活动"
+
+  - 原文: "3X-IPL ban log entries:"
+    译文: "3X-IPL 封禁日志条目："
+
+  - 原文: "No ban entries found"
+    译文: "未找到封禁条目"
+
+  - 原文: "Ban log file is empty"
+    译文: "封禁日志文件为空"
+
+  - 原文: "Ban log file not found at:"
+    译文: "未找到封禁日志文件："
+
+  - 原文: "Current jail status:"
+    译文: "当前 jail 状态："
+
+  - 原文: "Unable to get jail status"
+    译文: "无法获取 jail 状态"
+
+  - 原文: "Ip Limit jail files created with a bantime of"
+    译文: "IP 限制 jail 文件已创建，封禁时长为"
+
+  - 原文: "minutes."
+    译文: "分钟。"
+
+  - 原文: "Removing conflicts of [3x-ipl] in jail"
+    译文: "正在删除 jail 中 [3x-ipl] 的冲突配置"
+
+  - 原文: "Panel is secure with SSL."
+    译文: "面板已启用 SSL，当前连接安全。"
+
+  - 原文: "Warning: No Cert and Key found! The panel is not secure."
+    译文: "警告：未找到证书和私钥！面板当前不安全。"
+
+  - 原文: "Please obtain a certificate or set up SSH port forwarding."
+    译文: "请获取证书或设置 SSH 端口转发。"
+
+  - 原文: "Current SSH Port Forwarding Configuration:"
+    译文: "当前 SSH 端口转发配置："
+
+  - 原文: "Standard SSH command:"
+    译文: "标准 SSH 命令："
+
+  - 原文: "If using SSH key:"
+    译文: "如果使用 SSH 密钥："
+
+  - 原文: "After connecting, access the panel at:"
+    译文: "连接后，通过以下地址访问面板："
+
+  - 原文: "Set listen IP"
+    译文: "设置监听 IP"
+
+  - 原文: "Clear listen IP"
+    译文: "清空监听 IP"
+
+  - 原文: "No listenIP configured."
+    译文: "尚未配置 listenIP。"
+
+  - 原文: "Use default IP (127.0.0.1)"
+    译文: "使用默认 IP（127.0.0.1）"
+
+  - 原文: "Set a custom IP"
+    译文: "设置自定义 IP"
+
+  - 原文: "Select an option (1 or 2):"
+    译文: "请选择一个选项（1 或 2）："
+
+  - 原文: "Enter custom IP to listen on:"
+    译文: "请输入自定义监听 IP："
+
+  - 原文: "listen IP has been set to"
+    译文: "监听 IP 已设置为"
+
+  - 原文: "SSH Port Forwarding Configuration:"
+    译文: "SSH 端口转发配置："
+
+  - 原文: "Current listen IP is already set to"
+    译文: "当前监听 IP 已经设置为"
+
+  - 原文: "Listen IP has been cleared."
+    译文: "监听 IP 已清空。"
+
+  - 原文: "Please enter the correct number [0-26]"
+    译文: "请输入正确的数字 [0-26]"
+
+  - 原文: "Set to boot automatically on startup successfully"
+    译文: "已成功设置为开机自动启动"
+
+  - 原文: "Autostart canceled successfully"
+    译文: "已成功取消开机自启"
+
+  - 原文: "Debug Log"
+    译文: "调试日志"
+
+  - 原文: "Clear All logs"
+    译文: "清空所有日志"
+
+  - 原文: "All Logs cleared."
+    译文: "所有日志已清空。"
+
+  - 原文: "Enable BBR"
+    译文: "启用 BBR"
+
+  - 原文: "Disable BBR"
+    译文: "禁用 BBR"
+
+  - 原文: "BBR is not currently enabled."
+    译文: "当前未启用 BBR。"
+
+  - 原文: "BBR has been replaced with CUBIC successfully."
+    译文: "BBR 已成功替换为 CUBIC。"
+
+  - 原文: "BBR is already enabled!"
+    译文: "BBR 已经启用！"
+
+  - 原文: "BBR has been enabled successfully."
+    译文: "BBR 已成功启用。"
+
+  - 原文: "Failed to enable BBR. Please check your system configuration."
+    译文: "启用 BBR 失败，请检查系统配置。"
+
+  - 原文: "Do you want to delete rules by:"
+    译文: "请选择删除规则的方式："
+
+  - 原文: "Rule numbers"
+    译文: "规则编号"
+
+  - 原文: "2) Ports"
+    译文: "2) 端口"
+
+  - 原文: "Port ${WebPort} is currently in use."
+    译文: "端口 ${WebPort} 当前已被占用。"
+
+  - 原文: "Port ${WebPort} is busy; cannot proceed with issuance."
+    译文: "端口 ${WebPort} 正忙，无法继续签发。"
+
+  - 原文: "Selected rules have been deleted."
+    译文: "已删除选中的规则。"
+
+  - 原文: "All"
+    译文: "全部"
+
+  - 原文: "Loyalsoldier datasets have been updated successfully!"
+    译文: "Loyalsoldier 数据集已更新成功！"
+
+  - 原文: "chocolate4u datasets have been updated successfully!"
+    译文: "chocolate4u 数据集已更新成功！"
+
+  - 原文: "runetfreedom datasets have been updated successfully!"
+    译文: "runetfreedom 数据集已更新成功！"
+
+  - 原文: "All geo files have been updated successfully!"
+    译文: "所有 Geo 文件已更新成功！"
+
+  - 原文: "Get SSL (Domain)"
+    译文: "申请 SSL（域名）"
+
+  - 原文: "Revoke"
+    译文: "吊销证书"
+
+  - 原文: "Force Renew"
+    译文: "强制续期"
+
+  - 原文: "Show Existing Domains"
+    译文: "显示现有域名"
+
+  - 原文: "Set Cert paths for the panel"
+    译文: "为面板设置证书路径"
+
+  - 原文: "Get SSL for IP Address (6-day cert, auto-renews)"
+    译文: "为 IP 地址申请 SSL（6 天证书，自动续期）"
+
+  - 原文: "No certificates found to revoke."
+    译文: "没有找到可吊销的证书。"
+
+  - 原文: "Existing domains:"
+    译文: "现有域名："
+
+  - 原文: "Certificate revoked for domain:"
+    译文: "已吊销该域名证书："
+
+  - 原文: "No certificates found to renew."
+    译文: "没有找到可续期的证书。"
+
+  - 原文: "Certificate forcefully renewed for domain:"
+    译文: "已强制续期该域名证书："
+
+  - 原文: "No certificates found."
+    译文: "没有找到证书。"
+
+  - 原文: "Existing domains and their paths:"
+    译文: "现有域名及其路径："
+
+  - 原文: "Domain:"
+    译文: "域名："
+
+  - 原文: "Certificate Path:"
+    译文: "证书路径："
+
+  - 原文: "Private Key Path:"
+    译文: "私钥路径："
+
+  - 原文: "Certificate or Key missing."
+    译文: "证书或私钥缺失。"
+
+  - 原文: "Available domains:"
+    译文: "可用域名："
+
+  - 原文: "acme.sh is already installed."
+    译文: "acme.sh 已安装。"
+
+  - 原文: "Install acme failed, please check logs."
+    译文: "安装 acme.sh 失败，请检查日志。"
+
+  - 原文: "Unsupported operating system. Please uninstall Fail2ban manually."
+    译文: "不支持的操作系统。请手动卸载 Fail2ban。"

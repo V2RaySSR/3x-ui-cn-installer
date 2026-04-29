@@ -19,19 +19,6 @@
 bash <(curl -Ls https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/latest/generated/install-cn.sh)
 ```
 
-## 自动校验
-
-每次同步都会执行以下检查：
-
-- `bash -n` 检查官方脚本和中文脚本语法
-- 对比官方脚本，确认非输出逻辑行完全一致
-- 检查 Bash 变量中是否被误插入中文
-- 检查命令菜单边框显示宽度，避免中文导致表格错位
-- 扫描明显未翻译的用户可见英文文案
-- 确认生成过程可重复
-
-如果核心逻辑存在意外变化，自动流程会失败，不会生成可合并的同步结果。
-
 ## 文件说明
 
 - `generated/install-cn.sh`：中文安装脚本，用户直接执行这个文件
@@ -57,9 +44,3 @@ bash <(curl -Ls https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/la
 5. 同时创建同步 PR，便于后续补充翻译并合并到 `main`
 
 `main` 用于人工审核和归档，`latest` 用于自动发布给用户。
-
-## 维护原则
-
-中文脚本由自动流程生成，不直接手工编辑 `generated/install-cn.sh`。
-
-如果官方脚本新增英文提示，应更新 `translations.yml`，再由自动流程重新生成中文脚本和中文管理脚本。

@@ -96,8 +96,7 @@ def 生成中文脚本(原始内容: str, 翻译列表: list[dict[str, str]]) ->
     for 行 in 原始内容.splitlines(keepends=True):
         应翻译 = 多行输出中 or 是输出语句(行)
         if 应翻译:
-            for 项 in 翻译列表:
-                行 = 行.replace(项["原文"], 项["译文"])
+            行 = 翻译输出行(行, 翻译列表)
         行列表.append(行)
 
         if 是多行输出起点(行) or (多行输出中 and 双引号数量为奇数(行)):
@@ -107,6 +106,7 @@ def 生成中文脚本(原始内容: str, 翻译列表: list[dict[str, str]]) ->
     内容 = 格式化中文命令菜单(内容)
     内容 = 格式化中文用法菜单(内容)
     内容 = 格式化中文管理菜单(内容)
+    内容 = 修正带颜色变量的中文片段(内容)
     内容 = 使用中文管理脚本下载地址(内容)
 
     文件头 = """# 此文件由 scripts/translate.py 自动生成，请不要直接编辑。
@@ -117,6 +117,17 @@ def 生成中文脚本(原始内容: str, 翻译列表: list[dict[str, str]]) ->
         第一行, 分隔符, 剩余内容 = 内容.partition("\n")
         return f"{第一行}\n{文件头}{剩余内容 if 分隔符 else ''}"
     return 文件头 + 内容
+
+
+def 翻译输出行(行: str, 翻译列表: list[dict[str, str]]) -> str:
+    片段列表 = re.split(r"(\$\{[^}]+\})", 行)
+    for 索引, 片段 in enumerate(片段列表):
+        if 片段.startswith("${") and 片段.endswith("}"):
+            continue
+        for 项 in 翻译列表:
+            片段 = 片段.replace(项["原文"], 项["译文"])
+        片段列表[索引] = 片段
+    return "".join(片段列表)
 
 
 def 使用中文管理脚本下载地址(内容: str) -> str:
@@ -131,6 +142,23 @@ def 使用中文管理脚本下载地址(内容: str) -> str:
         "bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)",
         "bash <(curl -Ls https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/latest/generated/install-cn.sh)",
     )
+    return 内容
+
+
+def 修正带颜色变量的中文片段(内容: str) -> str:
+    替换 = {
+        "Start automatically: ${green}Yes": "开机自启：${green}是",
+        "Start automatically: ${red}No": "开机自启：${red}否",
+        "x-ui Autostart 已取消 successfully": "x-ui 已成功取消开机自启",
+        "Port ${WebPort}": "端口 ${WebPort}",
+        "${green}Install${plain} Firewall": "${green}安装${plain} 防火墙",
+        "${green}Open${plain} Ports": "${green}开放${plain} 端口",
+        "${red}Delete${plain} 列表中的端口": "${red}删除${plain} 列表中的端口",
+        "${green}Enable${plain} Firewall": "${green}启用${plain} 防火墙",
+        "${red}Disable${plain} Firewall": "${red}禁用${plain} 防火墙",
+    }
+    for 原文, 译文 in 替换.items():
+        内容 = 内容.replace(原文, 译文)
     return 内容
 
 
@@ -304,7 +332,14 @@ def 空格(数量: int) -> str:
 
 
 def 是输出语句(行: str) -> bool:
-    return re.search(r"(^|\s)(echo|printf)\b", 行) is not None or re.search(r"(^|\s)read\s+(-[A-Za-z]+\s+)*['\"]", 行) is not None
+    去空白 = 行.lstrip()
+    条件前缀 = r"(?:\[\[.*?\]\]\s*(?:&&|\|\|)\s*)?"
+    return (
+        re.match(rf"{条件前缀}(echo|printf)\b", 去空白) is not None
+        or re.match(rf"{条件前缀}read\s+(-[A-Za-z]+\s+)*['\"]", 去空白) is not None
+        or re.match(rf"{条件前缀}(LOGD|LOGE|LOGI|confirm)\s+['\"]", 去空白) is not None
+        or re.search(r"(\|\||&&)\s*(echo|printf|read)\b", 行) is not None
+    )
 
 
 def 是多行输出起点(行: str) -> bool:
