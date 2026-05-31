@@ -6,7 +6,7 @@ from __future__ import annotations
 import json
 import os
 import subprocess
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -20,7 +20,11 @@ README路径 = 项目根目录 / "README.md"
 
 
 def 当前时间() -> str:
-    return datetime.now(ZoneInfo("Asia/Shanghai")).strftime("%Y-%m-%d %H:%M:%S CST")
+    try:
+        时区 = ZoneInfo("Asia/Shanghai")
+    except Exception:
+        时区 = timezone(timedelta(hours=8))
+    return datetime.now(时区).strftime("%Y-%m-%d %H:%M:%S CST")
 
 
 def 运行命令(参数: list[str]) -> str:
@@ -71,6 +75,14 @@ def 未翻译数量() -> int:
         if "暂未发现明显未翻译" in 内容 or "未发现明显未翻译" in 内容:
             return 0
         return sum(1 for 行 in 内容.splitlines() if 行.startswith("- `"))
+    if 元数据路径.exists():
+        try:
+            旧元数据 = json.loads(元数据路径.read_text(encoding="utf-8"))
+            旧数量 = 旧元数据.get("untranslated_user_visible_text_count")
+            if isinstance(旧数量, int):
+                return 旧数量
+        except json.JSONDecodeError:
+            pass
     return -1
 
 
@@ -78,11 +90,11 @@ def 短_commit(commit: str) -> str:
     return commit[:12] if commit else "unknown"
 
 
-def 写同步状态(元数据: dict[str, object]) -> None:
+def 生成同步记录(元数据: dict[str, object]) -> str:
     变更 = 元数据["official_change_summary"]
     未翻译 = 元数据["untranslated_user_visible_text_count"]
     行列表 = [
-        "# 3x-ui 中文安装器同步状态",
+        f"## {元数据['official_script_synced_at']} - {短_commit(str(元数据['official_commit']))}",
         "",
         f"- 官方仓库：`{元数据['official_repository']}`",
         f"- 官方分支：`{元数据['official_branch']}`",
@@ -92,19 +104,47 @@ def 写同步状态(元数据: dict[str, object]) -> None:
         f"- 校验状态：`{元数据['validation_status']}`",
         f"- 未翻译用户可见文案：`{未翻译 if 未翻译 >= 0 else 'unknown'}` 条",
         "",
-        "## 本次官方脚本变更",
+        "### 本次官方脚本变更",
         "",
         f"- `install.sh`：新增 `{变更['install.sh']['additions']}` 行，删除 `{变更['install.sh']['deletions']}` 行",
         f"- `x-ui.sh`：新增 `{变更['x-ui.sh']['additions']}` 行，删除 `{变更['x-ui.sh']['deletions']}` 行",
         "",
-        "## 发布内容",
+        "### 发布内容",
         "",
         f"- `generated/install-cn.sh`：`{元数据['generated_scripts']['install-cn.sh']['lines']}` 行，SHA256 `{元数据['generated_scripts']['install-cn.sh']['sha256']}`",
         f"- `generated/x-ui-cn.sh`：`{元数据['generated_scripts']['x-ui-cn.sh']['lines']}` 行，SHA256 `{元数据['generated_scripts']['x-ui-cn.sh']['sha256']}`",
         "",
         "说明：中文脚本保持官方安装逻辑不变，仅汉化用户可见提示，并把安装入口切换为本项目的中文脚本。",
     ]
-    同步状态路径.write_text("\n".join(行列表) + "\n", encoding="utf-8")
+    return "\n".join(行列表)
+
+
+def 写同步状态(元数据: dict[str, object]) -> None:
+    新记录 = 生成同步记录(元数据)
+    历史标记 = "<!-- sync-history:start -->"
+    文件头 = "\n".join(
+        [
+            "# 3x-ui 中文安装器同步记录",
+            "",
+            "说明：README 首页只展示最近一次同步状态；本文件按时间倒序保留每次同步记录。",
+            "",
+            历史标记,
+            "",
+        ]
+    )
+
+    旧历史 = ""
+    if 同步状态路径.exists():
+        旧内容 = 同步状态路径.read_text(encoding="utf-8").strip()
+        if 历史标记 in 旧内容:
+            旧历史 = 旧内容.split(历史标记, 1)[1].strip()
+        elif 旧内容:
+            旧历史 = "## 迁移前记录\n\n" + 旧内容
+
+    if 旧历史:
+        同步状态路径.write_text(f"{文件头}{新记录}\n\n{旧历史}\n", encoding="utf-8")
+    else:
+        同步状态路径.write_text(f"{文件头}{新记录}\n", encoding="utf-8")
 
 
 def main() -> int:

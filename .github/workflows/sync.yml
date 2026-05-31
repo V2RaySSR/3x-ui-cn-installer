@@ -54,12 +54,18 @@ jobs:
         run: |
           {
             echo "## 同步状态"
-            cat generated/sync-status.md
+            awk '
+              /^## / { count += 1 }
+              count < 2 { print }
+            ' generated/sync-status.md
             echo
             echo "## 翻译报告"
             cat /tmp/i18n-report.md
           } > /tmp/sync-pr-body.md
-          cat generated/sync-status.md >> "$GITHUB_STEP_SUMMARY"
+          awk '
+            /^## / { count += 1 }
+            count < 2 { print }
+          ' generated/sync-status.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: 发布同步时间到 README
         run: |
