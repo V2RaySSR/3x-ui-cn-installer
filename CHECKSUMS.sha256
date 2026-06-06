@@ -12,3 +12,7 @@ bad5a2c2837cfb68061c47e44fe6d367dfed2e1db8534cb2bd97bc10cbb2c9de  x-ui-linux-386
 c3e080df206d2de5fbb99abb201eab729d1c8415431cbed7aef2fcf31023b8ce  x-ui-linux-armv5.tar.gz
 d28757df8aafb0a68ca588fc82be6b55c2063f304c782a2ef07d9eeeb1083651  x-ui-linux-armv6.tar.gz
 fd249b801f2c4f5e098c4ac2edf13362c621d3d1ccffa37a44bdd26b587e3640  x-ui-linux-amd64.tar.gz
+b180c5c269649e8f6d9b73ff8ba82b8cd84acf6ab9438cb73d476ad3f206cb2b  assets/x-ui.rc
+ebc103d3024163daa46d6c33e0a90f34d7a141efd4c22d30e75d04cf3c0f34c4  assets/x-ui.service.arch
+c1500ace809285119eade9b0e46464d0a0b0fef66a18ac1d920d86557b52b476  assets/x-ui.service.debian
+23c31f61ce8d1530262cf69df47a953d35d3df1fb5790a4798b1607a21e35f3f  assets/x-ui.service.rhel

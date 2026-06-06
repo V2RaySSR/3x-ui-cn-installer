@@ -44,6 +44,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/
 | 中文安装脚本 | 固定为仓库根目录 `install-cn.sh` |
 | 中文管理菜单 | 固定为仓库根目录 `x-ui-cn.sh` |
 | 安装资源 | 固定保存在本仓库 Release |
+| Geo 更新 | 保留原脚本逻辑，可从常用规则项目获取新版数据 |
 | 自动同步官方脚本 | 已移除 |
 | 自动翻译官方最新版 | 已移除 |
 
@@ -52,6 +53,8 @@ bash <(curl -fsSL https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/
 ## 固定资源
 
 本仓库已经把 `v2.9.3` 当时发布的安装包保存到自己的 Release 里。安装脚本下载面板时，会从 `V2RaySSR/3x-ui-cn-installer` 自己的 Release 获取资源，不再依赖官方仓库的最新版接口，也不再去官方仓库拉安装脚本或服务文件。
+
+Geo 数据文件安装包内已有备份，菜单里的 Geo 更新功能会保留原脚本逻辑，尝试从常用规则项目获取新版数据。这个功能是可选维护项，更新失败不影响面板正常安装和基础使用。
 
 | 类型 | 文件 |
 | --- | --- |
@@ -67,6 +70,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/
 | Geo 数据文件 | `geoip_IR.dat` / `geosite_IR.dat` |
 | Geo 数据文件 | `geoip_RU.dat` / `geosite_RU.dat` |
 | Alpine 服务脚本 | `assets/x-ui.rc` |
+| systemd 服务文件 | `assets/x-ui.service.debian` / `assets/x-ui.service.arch` / `assets/x-ui.service.rhel` |
 
 文件校验值见 [`CHECKSUMS.sha256`](CHECKSUMS.sha256)。
 
@@ -83,6 +87,9 @@ bash <(curl -fsSL https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/
 | [`install-cn.sh`](install-cn.sh) | 中文固定版一键安装脚本 |
 | [`x-ui-cn.sh`](x-ui-cn.sh) | 安装后的中文 `x-ui` 管理菜单 |
 | [`assets/x-ui.rc`](assets/x-ui.rc) | Alpine/OpenRC 服务脚本 |
+| [`assets/x-ui.service.debian`](assets/x-ui.service.debian) | Debian / Ubuntu / Armbian 的 systemd 服务文件备用副本 |
+| [`assets/x-ui.service.arch`](assets/x-ui.service.arch) | Arch / Manjaro / Parch 的 systemd 服务文件备用副本 |
+| [`assets/x-ui.service.rhel`](assets/x-ui.service.rhel) | RHEL / CentOS / Rocky / AlmaLinux 等系统的 systemd 服务文件备用副本 |
 | [`CHECKSUMS.sha256`](CHECKSUMS.sha256) | 固定资源的 sha256 校验值 |
 
 ## 官方项目
