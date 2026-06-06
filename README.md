@@ -1,54 +1,62 @@
-# 3x-ui 中文安装器
+# 3x-ui v2.9.3 中文固定版安装脚本
 
-[![CI](https://github.com/V2RaySSR/3x-ui-cn-installer/actions/workflows/sync.yml/badge.svg?branch=main&label=CI)](https://github.com/V2RaySSR/3x-ui-cn-installer/actions/workflows/sync.yml)
+这是配合 V2RaySSR 视频教程使用的 3x-ui 中文固定版安装脚本。
 
-自动同步官方 [3x-ui](https://github.com/MHSanaei/3x-ui) 安装脚本，并生成中文本地化安装脚本。
+如果你是第一次搭建，或者你是跟着我的视频一步一步操作，推荐你直接使用这个版本。这个仓库固定的是我在 **2026 年 4 月 30 日录制教程时使用的 3x-ui v2.9.3**，这样你看到的安装流程、面板界面、按钮位置和视频里基本一致，不会因为官方新版大改界面而突然对不上。
 
-本项目只做一件事：
-
-> 保持官方安装逻辑不变，仅汉化安装过程中的交互提示、菜单文字和状态文字。
-
-## 中文安装 3x-ui
-
-<!-- sync-info:start -->
-### 最近一次官方同步状态
-
-- 官方来源：`MHSanaei/3x-ui` 的 `main` 分支
-- 官方 commit：`998fa0dfe1a1`
-- 同步时间：`2026-06-01 04:03:48 CST`
-- 官方脚本变更：`install.sh +0 -0`，`x-ui.sh +0 -0`
-- 未翻译用户可见文案：`0` 条
-- 校验状态：`通过，未修改官方安装逻辑`
-- 详细状态：[`generated/sync-status.md`](generated/sync-status.md)
-<!-- sync-info:end -->
+## 一键安装
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/latest/generated/install-cn.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/V2RaySSR/3x-ui-cn-installer/main/install-cn.sh)
 ```
 
-## 文件说明
+## 为什么固定这个版本
 
-- `generated/install-cn.sh`：中文安装脚本，用户直接执行这个文件
-- `generated/x-ui-cn.sh`：安装后的中文 `x-ui` 管理脚本
-- `generated/metadata.json`：最近一次官方同步和中文生成时间
-- `generated/sync-status.md`：完整同步记录，README 首页只展示最近一次
-- `upstream/install.sh`：同步自官方的原始安装脚本
-- `upstream/x-ui.sh`：同步自官方的原始管理脚本
-- `translations.yml`：中文翻译映射表
-- `scripts/translate.py`：中文脚本生成器，包含中文菜单宽度排版逻辑
-- `scripts/validate.py`：生成结果验证器
-- `.github/workflows/sync.yml`：自动同步和 PR 工作流
+官方项目一直在更新，这是好事，但对新手来说也会带来一个问题：教程录制时是一个界面，过一段时间官方新版可能变成另一个界面。你跟着视频操作时，如果按钮名字、菜单位置、安装流程都变了，就很容易卡住。
 
-## 自动更新
+所以这个仓库不再追随官方最新版，而是固定保存视频教程同款版本：
 
-仓库每天自动检查官方安装脚本。
+- 固定面板版本：`3x-ui v2.9.3`
+- 固定中文安装脚本：`install-cn.sh`
+- 固定中文管理菜单：`x-ui-cn.sh`
+- 固定安装资源：保存在本仓库的 `v2.9.3-cn` Release
+- 不再自动同步官方脚本
+- 不再自动翻译官方最新版
 
-如果官方脚本发生变化，GitHub Actions 会自动：
+简单说：如果你是小白，想要和视频里的步骤一致，就用这个仓库。
 
-1. 同步官方最新版 `install.sh` 和 `x-ui.sh`
-2. 重新生成 `generated/install-cn.sh` 和 `generated/x-ui-cn.sh`
-3. 执行发布前校验
-4. 自动更新 `latest` 分支，用户安装命令会立即使用新版
-5. 同时创建同步 PR，便于后续补充翻译并合并到 `main`
+## 固定资源说明
 
-`main` 用于人工审核和归档，`latest` 用于自动发布给用户。
+本仓库已经把 `v2.9.3` 当时发布的安装包保存到自己的 Release 里。安装脚本下载面板时，会从 `V2RaySSR/3x-ui-cn-installer` 自己的 Release 获取资源，不再依赖官方仓库的最新版接口，也不再去官方仓库拉安装脚本或服务文件。
+
+已固定保存的资源包括：
+
+- `x-ui-linux-amd64.tar.gz`
+- `x-ui-linux-arm64.tar.gz`
+- `x-ui-linux-386.tar.gz`
+- `x-ui-linux-armv5.tar.gz`
+- `x-ui-linux-armv6.tar.gz`
+- `x-ui-linux-armv7.tar.gz`
+- `x-ui-linux-s390x.tar.gz`
+- `x-ui-windows-amd64.zip`
+- `geoip.dat` / `geosite.dat`
+- `geoip_IR.dat` / `geosite_IR.dat`
+- `geoip_RU.dat` / `geosite_RU.dat`
+- `assets/x-ui.rc`
+
+文件校验值见 [`CHECKSUMS.sha256`](CHECKSUMS.sha256)。
+
+## 给有基础的朋友
+
+如果你已经熟悉 Linux、Xray、Reality 协议和面板配置，也可以自行尝试官方更新的版本。只是新版的界面、菜单和教程里的步骤可能不同，需要你自己判断。
+
+如果你是第一次安装，建议先不要追新。先跟着视频把环境跑通，比一上来研究最新版变化更稳。
+
+## 仓库文件
+
+- `install-cn.sh`：中文固定版一键安装脚本
+- `x-ui-cn.sh`：安装后的中文 `x-ui` 管理菜单
+- `assets/x-ui.rc`：Alpine/OpenRC 服务脚本
+- `CHECKSUMS.sha256`：固定资源的 sha256 校验值
+
+这个仓库现在只做一件事：保存并提供视频教程同款的 3x-ui v2.9.3 中文固定版。
