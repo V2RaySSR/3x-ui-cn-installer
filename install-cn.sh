@@ -847,8 +847,9 @@ install_x-ui() {
     if [[ $(arch) == "armv5" || $(arch) == "armv6" || $(arch) == "armv7" ]]; then
         mv bin/xray-linux-$(arch) bin/xray-linux-arm
         chmod +x bin/xray-linux-arm
+    else
+        chmod +x x-ui bin/xray-linux-$(arch)
     fi
-    chmod +x x-ui bin/xray-linux-$(arch)
 
     # 更新 x-ui 命令行脚本并设置权限
     mv -f /usr/bin/x-ui-temp /usr/bin/x-ui

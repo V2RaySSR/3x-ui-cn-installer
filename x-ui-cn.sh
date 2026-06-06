@@ -158,6 +158,10 @@ update_menu() {
     fi
 
     curl -fLRo /usr/bin/x-ui "${raw_base}/x-ui-cn.sh"
+    if [[ $? != 0 ]]; then
+        echo -e "${red}菜单更新失败。${plain}"
+        return 1
+    fi
     chmod +x ${xui_folder}/x-ui.sh
     chmod +x /usr/bin/x-ui
 
