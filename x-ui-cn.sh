@@ -295,7 +295,15 @@ check_config() {
         show_menu
         return
     fi
-    LOGI "${info}"
+    local display_info=$(echo "$info" | sed \
+        -e 's/current panel settings as follows:/当前面板设置如下：/g' \
+        -e 's/Panel is secure with SSL/面板已启用 SSL，当前连接安全/g' \
+        -e 's/Panel is not secure with SSL/面板未启用 SSL/g' \
+        -e 's/hasDefaultCredential: true/是否仍使用默认账号密码: 是/g' \
+        -e 's/hasDefaultCredential: false/是否仍使用默认账号密码: 否/g' \
+        -e 's/^port: /面板端口: /g' \
+        -e 's/^webBasePath: /Web 入口路径: /g')
+    LOGI "${display_info}"
 
     local existing_webBasePath=$(echo "$info" | grep -Eo 'webBasePath: .+' | awk '{print $2}')
     local existing_port=$(echo "$info" | grep -Eo 'port: .+' | awk '{print $2}')
